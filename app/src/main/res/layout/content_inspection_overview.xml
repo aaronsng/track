@@ -1,11 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<lta.amazoning.track.CustomNestedScrollView2
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id='@+id/nestedscrollview'
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".InspectionOverview"
-    tools:showIn="@layout/activity_inspection_overview">
+    app:layout_behavior="lta.amazoning.track.CustomBehavior">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:descendantFocusability="blocksDescendants">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/inspection_container"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:paddingLeft="24dp"
+                        android:paddingTop="16dp"
+                        android:paddingRight="24dp"
+                        android:paddingBottom="4dp"
+                        android:id="@+id/cardo_title"
+                        android:text="@string/currentlyInspecting"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                    <TextView
+                        android:id="@+id/card_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginLeft="145dp"
+                        android:layout_marginTop="45dp"
+                        android:layout_marginEnd="80dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <lta.amazoning.track.MaxHeightRecyclerView
+                        android:id="@+id/card_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:id="@+id/card_header_shadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:alpha="0"
+                        android:background="@drawable/toolbar_shadow" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </FrameLayout>
+
+</lta.amazoning.track.CustomNestedScrollView2>
