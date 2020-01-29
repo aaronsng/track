@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">track</string>
+    <string name="app_name" translatable="false">track</string>
+    <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
 </resources>
