@@ -8,9 +8,9 @@
     tools:context=".InspectionOverview">
 
     <FrameLayout
+        android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_container"
         android:background="@color/colorPrimaryDark"
         android:fitsSystemWindows="true">
 
@@ -18,8 +18,8 @@
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/round_rect_shape"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/round_rect_shape"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
