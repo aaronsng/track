@@ -4,4 +4,11 @@
     <string name="title_activity_homepage">Homepage</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="sample">yourmum</string>
+    <string name="title_activity_homepage2">Homepage2</string>
+    <string name="continue_inspection">Continue inspection</string>
+    <string name="tutorial_refresher">tutorial/refresher</string>
+
+
+
 </resources>

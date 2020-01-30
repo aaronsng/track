@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Homepage2"
+            android:label="@string/title_activity_homepage2"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="lta.amazoning.track.MainActivity" />
+        </activity>
+        <activity
             android:name=".Homepage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_homepage"
