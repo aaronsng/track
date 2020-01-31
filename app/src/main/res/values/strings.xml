@@ -1,6 +1,10 @@
 <resources>
+<<<<<<< HEAD
 
 <!--    <string name="app_name">track</string>-->
+=======
+    <string name="app_name">track</string>
+>>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
 
     <string name="title_activity_homepage">Homepage</string>
     <string name="dummy_button">Dummy Button</string>
@@ -9,6 +13,7 @@
     <string name="title_activity_homepage2">Homepage2</string>
     <string name="continue_inspection">Continue inspection</string>
     <string name="tutorial_refresher">tutorial/refresher</string>
+<<<<<<< HEAD
     <string name="app_name" translatable="false">track</string>
     <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
     <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
@@ -19,4 +24,9 @@
     <string name="remember" translatable="false">  Keep me signed in </string>
     <string name="forgetpw" translatable="false">  Forget Password? </string>
     <string name="sbslogo" translatable="false">  sbslogo </string>
+=======
+    <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
+    <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
+
+>>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
 </resources>

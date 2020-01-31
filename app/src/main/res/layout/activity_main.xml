@@ -37,6 +37,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:fontFamily="@font/raleway_bold"
         android:text= "@string/sample"
         android:textColor="#000000"
@@ -173,4 +174,12 @@
         app:layout_constraintTop_toBottomOf="@+id/login_button"
         app:layout_constraintVertical_bias="0.0" />
 
+=======
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/colorAccent"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+>>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
 </androidx.constraintlayout.widget.ConstraintLayout>

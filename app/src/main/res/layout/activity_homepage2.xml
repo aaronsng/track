@@ -57,20 +57,43 @@
         tools:layout_editor_absoluteY="175dp" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
+        android:id="@+id/btm_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@drawable/round_rect_shape"
+        android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:background="@drawable/round_rect_shape"
-        app:navigationIcon="@drawable/ic_menu_24"/>
+        app:backgroundTint="@android:color/transparent"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/round_rect_shape_upside_down"
+            app:backgroundTint="@color/colorPrimary">
+
+            <ImageButton
+                android:id="@+id/second_menu_item"
+                android:layout_width="@dimen/btm_app_bar_size"
+                android:layout_height="@dimen/btm_app_bar_size"
+                android:layout_marginStart="32dp"
+                android:background="@drawable/ic_menu_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@+id/bar"
-        app:layout_anchorGravity="top|center_vertical" />
+        app:backgroundTint="@android:color/holo_blue_dark"
+        app:layout_anchor="@id/btm_bar"
+        app:srcCompat="@drawable/plus" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
