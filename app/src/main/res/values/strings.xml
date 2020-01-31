@@ -1,5 +1,4 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">track</string>
 
     <string name="title_activity_homepage">Homepage</string>
@@ -9,12 +8,7 @@
     <string name="title_activity_homepage2">Homepage2</string>
     <string name="continue_inspection">Continue inspection</string>
     <string name="tutorial_refresher">tutorial/refresher</string>
-
-
-=======
-    <string name="app_name" translatable="false">track</string>
     <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
     <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
->>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
 
 </resources>
