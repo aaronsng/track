@@ -8,7 +8,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/AppTheme">
         <activity
             android:name=".Homepage2"
@@ -24,15 +23,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_homepage"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/FullscreenTheme">
-=======
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/FullscreenTheme"/>
         <activity
             android:name=".InspectionOverview"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
->>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lta.amazoning.track.MainActivity" />
