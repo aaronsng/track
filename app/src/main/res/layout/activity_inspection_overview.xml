@@ -25,7 +25,6 @@
 
     </FrameLayout>
 
-<<<<<<< HEAD
     <include layout="@layout/content_inspection_overview" />
 
 
@@ -110,18 +109,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-=======
         app:layout_anchor="@id/btm_bar"
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
         app:srcCompat="@drawable/plus" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

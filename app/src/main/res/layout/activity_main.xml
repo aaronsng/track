@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
-=======
-    android:background="#FFFFFF"
-    android:textAlignment="center">
+<!--    android:background="#FFFFFF"-->
+<!--    android:textAlignment="center">-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
@@ -21,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 
     <ImageView
         android:id="@+id/imageView"
@@ -32,29 +29,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.226"
-=======
-        app:layout_constraintVertical_bias="0.0"
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
         app:srcCompat="@drawable/sbs" />
+<!--    app:layout_constraintVertical_bias="0.0"-->
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
         android:fontFamily="@font/raleway_bold"
         android:text= "@string/sample"
-=======
-        android:fontFamily="@font/raleway"
-        android:text="@string/name"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+<!--        android:fontFamily="@font/raleway"-->
+<!--        android:text="@string/name"-->
+
 
     <Button
         android:id="@+id/login_button"
@@ -132,7 +124,6 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18dp"
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/password"
         app:layout_constraintHorizontal_bias="0.557"
@@ -153,22 +144,18 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.631" />
-=======
-        android:fontFamily="@font/raleway"
-        android:textColor="@color/colorAccent"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
->>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
-=======
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+<!--        android:fontFamily="@font/raleway"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/password" />-->
 
     <Button
         android:id="@+id/button2"
@@ -186,5 +173,4 @@
         app:layout_constraintTop_toBottomOf="@+id/login_button"
         app:layout_constraintVertical_bias="0.0" />
 
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 </androidx.constraintlayout.widget.ConstraintLayout>

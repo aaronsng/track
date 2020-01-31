@@ -78,7 +78,6 @@ public class InspectionOverview extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
         FloatingActionButton fab = findViewById(R.id.fab);
 =======
         /*FloatingActionButton fab = findViewById(R.id.fab);
@@ -99,7 +98,6 @@ public class InspectionOverview extends AppCompatActivity {
         });
 =======
         });*/
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 
         final NestedScrollView nsv = findViewById(R.id.nestedscrollview);
         nsv.setOverScrollMode(View.OVER_SCROLL_NEVER);
