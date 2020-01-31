@@ -64,13 +64,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:background="@drawable/round_rect_shape_inverted"
             app:backgroundTint="@color/colorPrimary">
 
             <ImageButton
                 android:id="@+id/second_menu_item"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/btm_app_bar_size"
+                android:layout_height="@dimen/btm_app_bar_size"
                 android:layout_marginStart="32dp"
                 android:background="@drawable/ic_menu_24"
                 app:layout_constraintBottom_toBottomOf="parent"
