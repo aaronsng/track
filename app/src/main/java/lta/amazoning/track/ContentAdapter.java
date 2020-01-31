@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * list items to the user.
  */
 class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final int ITEM_COUNT = 5;
+    private static final int ITEM_COUNT = 10;
 
     private final LayoutInflater mInflater;
 
