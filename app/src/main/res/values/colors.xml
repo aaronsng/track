@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -11,4 +12,9 @@
     <color name="colorPrimaryDark">#F0F0F0</color>
     <color name="colorAccent">#303030</color>
 >>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
+=======
+    <color name="colorPrimary">#6D5BA8</color>
+    <color name="colorPrimaryDark">#F0F0F0</color>
+    <color name="colorAccent">#303030</color>
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 </resources>

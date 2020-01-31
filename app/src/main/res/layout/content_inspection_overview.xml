@@ -53,7 +53,11 @@
                         android:layout_marginStart="150dp"
                         android:layout_marginLeft="145dp"
                         android:layout_marginTop="45dp"
+<<<<<<< HEAD
                         android:layout_marginEnd="80dp"
+=======
+                        android:layout_marginEnd="50dp"
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
                         android:fontFamily="@font/raleway_semibold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </RelativeLayout>

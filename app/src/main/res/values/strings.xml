@@ -1,5 +1,6 @@
 <resources>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="app_name">track</string>
 
     <string name="title_activity_homepage">Homepage</string>
@@ -17,4 +18,16 @@
     <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
 >>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
 
+=======
+    <string name="app_name" translatable="false">track</string>
+    <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
+    <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
+    <string name="username" translatable="false"> Employer ID: </string>
+    <string name="password" translatable="false"> Password: </string>
+    <string name="login" translatable="false"> Login </string>
+    <string name="name" translatable="false"> P-Way Track Inspection App</string>
+    <string name="remember" translatable="false">  Keep me signed in </string>
+    <string name="forgetpw" translatable="false">  Forget Password? </string>
+    <string name="sbslogo" translatable="false">  sbslogo </string>
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 </resources>

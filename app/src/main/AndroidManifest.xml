@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:theme="@style/AppTheme">
         <activity
             android:name=".Homepage2"
@@ -26,13 +27,18 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/FullscreenTheme">
 =======
+=======
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".InspectionOverview"
             android:label="@string/app_name"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+<<<<<<< HEAD
 >>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
+=======
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lta.amazoning.track.MainActivity" />

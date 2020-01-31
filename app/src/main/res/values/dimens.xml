@@ -1,10 +1,17 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+    <dimen name="btm_app_bar_size">50dp</dimen>
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
     <dimen name="standard_55">55dp</dimen>
     <dimen name="standard_105">105dp</dimen>
     <dimen name="standard_155">155dp</dimen>
 
+<<<<<<< HEAD
 >>>>>>> 8733fae7a2e4768ef7afb21ae2c9543079784007
+=======
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 </resources>

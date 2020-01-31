@@ -25,6 +25,7 @@
 
     </FrameLayout>
 
+<<<<<<< HEAD
     <include layout="@layout/content_inspection_overview" />
 
 
@@ -51,13 +52,76 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="24dp"
             app:srcCompat="@android:drawable/ic_dialog_map" />
+=======
+
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        app:srcCompat="@android:drawable/ic_dialog_map" />-->
+
+    <include layout="@layout/content_inspection_overview" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/btm_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@android:color/transparent"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/round_rect_shape_inverted"
+            app:backgroundTint="@color/colorPrimary">
+
+            <ImageButton
+                android:id="@+id/second_menu_item"
+                android:layout_width="@dimen/btm_app_bar_size"
+                android:layout_height="@dimen/btm_app_bar_size"
+                android:layout_marginStart="32dp"
+                android:background="@drawable/ic_menu_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+=======
+        app:layout_anchor="@id/btm_bar"
+>>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
         app:srcCompat="@drawable/plus" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
