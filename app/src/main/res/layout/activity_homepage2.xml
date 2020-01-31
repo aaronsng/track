@@ -91,7 +91,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        app:backgroundTint="@android:color/holo_blue_dark"
         app:layout_anchor="@id/btm_bar"
         app:srcCompat="@drawable/plus" />
 
