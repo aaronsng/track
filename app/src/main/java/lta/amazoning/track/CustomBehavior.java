@@ -56,7 +56,7 @@ class CustomBehavior extends CoordinatorLayout.Behavior<NestedScrollView> {
 
         // Add the same amount of bottom padding to the RecyclerView so it doesn't
         // display its content underneath the navigation bar.
-        setPaddingBottom(rv, toolbarContainerHeight);
+        setPaddingBottom(rv, toolbarContainerHeight * 2);
 
         // Return true so that the parent doesn't waste time laying out the
         // child again (any modifications made above will have triggered a second

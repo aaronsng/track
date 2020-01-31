@@ -11,6 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/title_viewholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:fontFamily="@font/raleway_semibold"
         android:text="Your mum " />
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
+        android:id="@+id/subtitle_viewholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="?android:textColorSecondary"
         android:fontFamily="@font/raleway_semibold"
