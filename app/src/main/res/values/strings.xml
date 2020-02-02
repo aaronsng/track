@@ -17,6 +17,14 @@
     <string name="text_expanded">Expanded</string>
     <string name="text_collapsed">Collapsed</string>
     <string name="currentLog">Current logged defects:</string>
+    <string name="title_activity_homepage3">homepage3</string>
+    <string name="continue_inspection">Continue Inspection</string>
+    <string name="tutorial_refresher">Tutorial Refresher</string>
+    <string name="emergency">Emergency</string>
+    <string name="feedback">Feedback</string>
+    <string name="log_out">Log Out</string>
+    <string name="good_evening">Good Evening</string>
+    <string name="according_to_schedule">According to schedule, you are to inspect PGL-SKG</string>
 
 
     <string-array name="string_array_alcohol">

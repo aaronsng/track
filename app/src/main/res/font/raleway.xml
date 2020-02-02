@@ -8,4 +8,10 @@
         android:fontStyle="italic"
         android:fontWeight="400"
         android:font="@font/raleway_italic" />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/raleway_bold" />
+
 </font-family>

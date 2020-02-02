@@ -14,6 +14,9 @@ import java.util.List;
  * A dummy {@link RecyclerView.Adapter} that displays a list of placeholder
  * list items to the user.
  */
+
+//class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+//    private static final int ITEM_COUNT = 5;
 class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static final int ITEM_COUNT = 5;
     private final LayoutInflater mInflater;
@@ -25,12 +28,16 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
+//    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//        return new RecyclerView.ViewHolder(
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(
                 mInflater.inflate(R.layout.view_holder_item, parent, false)) {};
     }
 
     @Override
+//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
     public void onBindViewHolder(ViewHolder holder, int position) {
         List<String> listDataGroup = new ArrayList<>();
         List<String> indexGroup = new ArrayList<>();
