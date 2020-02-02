@@ -39,13 +39,13 @@ public class InspectionOverview extends AppCompatActivity {
         setContentView(R.layout.activity_inspection_overview);
         isFABOpen = false;
 
-        inspectionSum = findViewById(R.id.card_title);
+        inspectionSum = findViewById(R.id.cardo_title);
         tool_bar = findViewById(R.id.tool_bar);
 
         SpannableString content = new SpannableString(LOCATION);
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 
-        inspectionSum.setText(content);
+        inspectionSum.setText(inspectionSum.getText().toString() + " " + content);
         tool_bar.setTitle("Inspection #" + idFault);
 
 
@@ -59,7 +59,7 @@ public class InspectionOverview extends AppCompatActivity {
         rv.setActivated(true);
         rv.addItemDecoration(new DividerItemDecoration(this, lm.getOrientation()));
 
-        final View cardHeaderShadow = findViewById(R.id.card_header_shadow);
+        /*final View cardHeaderShadow = findViewById(R.id.card_header_shadow);
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView rv, int dx, int dy) {
@@ -76,7 +76,7 @@ public class InspectionOverview extends AppCompatActivity {
                     showOrHideView(cardHeaderShadow, false);
                 }
             }
-        });
+        });*/
 
         FloatingActionButton fab = findViewById(R.id.fab);
         /*FloatingActionButton fab = findViewById(R.id.fab);
@@ -106,7 +106,7 @@ public class InspectionOverview extends AppCompatActivity {
                     // Reset the RecyclerView's scroll position each time the card
                     // returns to its starting position.
                     rv.scrollToPosition(0);
-                    cardHeaderShadow.setAlpha(0f);
+                    //cardHeaderShadow.setAlpha(0f);
                     mIsShowingCardHeaderShadow = true;
                 }
             }
