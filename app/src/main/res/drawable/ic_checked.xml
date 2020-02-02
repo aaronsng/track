@@ -5,7 +5,7 @@
     android:viewportWidth="48"
     android:height="32dp"
     android:viewportHeight="48"
-    android:tint="@color/colorDarkGray">
+    android:tint="@color/colorPrimary">
     <group
         android:name="icon_null"
         android:translateX="24"

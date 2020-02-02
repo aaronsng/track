@@ -60,7 +60,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="228dp"
+        android:layout_width="wrap_content"
         android:layout_height="39dp"
         android:autofillHints=""
         android:background="@drawable/username_password_background"
@@ -78,7 +78,7 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="230dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:autofillHints=""
         android:background="@drawable/username_password_background"
@@ -98,16 +98,16 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="138dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/raleway"
         android:text="@string/username"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/username"
         app:layout_constraintEnd_toStartOf="@+id/username"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/username" />
 
@@ -119,10 +119,10 @@
         android:text="@string/password"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/password"
         app:layout_constraintEnd_toStartOf="@+id/password"
-        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/password" />
 
