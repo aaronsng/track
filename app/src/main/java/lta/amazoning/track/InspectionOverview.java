@@ -78,14 +78,9 @@ public class InspectionOverview extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
         FloatingActionButton fab = findViewById(R.id.fab);
-=======
         /*FloatingActionButton fab = findViewById(R.id.fab);
->>>>>>> 7f6f5e463955e564db16307c8581caddf5017b2b
-=======
         /*FloatingActionButton fab = findViewById(R.id.fab);
->>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
         fab1 = findViewById(R.id.fab1);
         fab2 = findViewById(R.id.fab2);
         fab3 = findViewById(R.id.fab3);
@@ -98,12 +93,7 @@ public class InspectionOverview extends AppCompatActivity {
                     closeFABMenu();
                 }
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
         });
-=======
-=======
->>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
         });*/
 
         final NestedScrollView nsv = findViewById(R.id.nestedscrollview);

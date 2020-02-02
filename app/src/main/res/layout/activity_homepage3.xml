@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".homepage3">
+
+    <!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+    <!--        android:id="@+id/btm_bar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="690dp"-->
+    <!--        app:backgroundTint="@android:color/transparent"-->
+    <!--        app:contentInsetLeft="0dp"-->
+    <!--        app:contentInsetStart="0dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/fab"/>-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="686dp"
+        android:background="@drawable/round_rect_shape_upside_down"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inspection_button"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/profile"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/settings"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="685dp"
+        android:background="@drawable/round_rect_shape"
+        android:radius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/inspection_button"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="130dp"
+        android:backgroundTint="#fafafa"
+        android:elevation="10dp"
+        android:fontFamily="@font/raleway_regular"
+        android:text="@string/continue_inspection"
+        android:textAllCaps="false"
+        android:textColor="#d4d4d4"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/tutorial_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/tutorial_button"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="205dp"
+        android:backgroundTint="#eeeeee"
+        android:elevation="10dp"
+        android:fontFamily="@font/raleway_regular"
+        android:text="@string/tutorial_refresher"
+        android:textAllCaps="false"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/emergency_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/emergency_button"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="280dp"
+        android:backgroundTint="#eeeeee"
+        android:fontFamily="@font/raleway_regular"
+        android:text="@string/emergency"
+        android:textAllCaps="false"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/feedback_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/feedback_button"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="360dp"
+        android:backgroundTint="#eeeeee"
+        android:fontFamily="@font/raleway_regular"
+        android:text="@string/feedback"
+        android:textAllCaps="false"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="450dp"
+        android:backgroundTint="#eeeeee"
+        android:fontFamily="@font/raleway_regular"
+        android:text="@string/log_out"
+        android:textAllCaps="false"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/good_evening"
+        android:textColor="@color/black_overlay"
+        android:textSize="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/inspection_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/according_to_schedule"
+        android:textSize="17dp"
+        android:fontFamily="@font/raleway_regular"
+        app:layout_constraintBottom_toTopOf="@+id/inspection_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:textSize="12sp"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:srcCompat="@drawable/plus"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    app:srcCompat="@drawable/plus"-->
+<!--    app:layout_anchor="@id/btm_bar"-->

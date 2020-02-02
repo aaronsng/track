@@ -1,22 +1,18 @@
 <resources>
-<<<<<<< HEAD
 
-<!--    <string name="app_name">track</string>-->
-=======
-    <string name="app_name">track</string>
->>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
+    <!--    <string name="app_name">track</string>-->
+    <!--    <string name="app_name">track</string>-->
 
     <string name="title_activity_homepage">Homepage</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="sample">yourmum</string>
     <string name="title_activity_homepage2">Homepage2</string>
-    <string name="continue_inspection">Continue inspection</string>
-    <string name="tutorial_refresher">tutorial/refresher</string>
-<<<<<<< HEAD
+    <string name="continue_inspection">Continue Inspection</string>
+    <string name="tutorial_refresher">Tutorial/Refresher</string>
     <string name="app_name" translatable="false">track</string>
-    <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
-    <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
+    <!--    <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>-->
+    <!--    <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>-->
     <string name="username" translatable="false"> Employer ID: </string>
     <string name="password" translatable="false"> Password: </string>
     <string name="login" translatable="false"> Login </string>
@@ -24,9 +20,22 @@
     <string name="remember" translatable="false">  Keep me signed in </string>
     <string name="forgetpw" translatable="false">  Forget Password? </string>
     <string name="sbslogo" translatable="false">  sbslogo </string>
-=======
     <string name="title_activity_inspection_overview" translatable="false">InspectionOverview</string>
     <string name="currentlyInspecting" translatable="false">You are currently inspecting</string>
+    <string name="title_activity_homepage3">homepage3</string>
+    <string name="good_evening" translatable="false">Good Evening, Julian</string>
+    <string name="according_to_schedule" translatable="false">According to the schedule, you are to inspect PGL - SKG</string>
+    <string name="emergency" translatable="false">Emergency</string>
+    <string name="feedback" translatable="false">Feedback</string>
+    <string name="log_out" translatable="false">Log out</string>
+    <string name="profile" translatable="false">Profile</string>
+    <string name="settings" translatable="false">Settings</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="go" translatable="false">Go!</string>
 
->>>>>>> 49e7228c4f9c3b3b1b3e1d8637da5adce1072c58
+    <string name="title_activity_tutorial_refreshers">TutorialRefreshers</string>
+
+    <string name="title_activity_tutorial_refreshers_v2">TutorialRefreshersV2</string>
+
+
 </resources>
