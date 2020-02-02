@@ -32,7 +32,6 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         List<String> listDataGroup = new ArrayList<>();
         List<String> indexGroup = new ArrayList<>();
         HashMap<String, List<String>> listDataChild = new HashMap<>();
