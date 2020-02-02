@@ -6,16 +6,21 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * A dummy {@link RecyclerView.Adapter} that displays a list of placeholder
  * list items to the user.
  */
 class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-    private static final int ITEM_COUNT = 10;
-
+    private static final int ITEM_COUNT = 5;
     private final LayoutInflater mInflater;
+    private Context context;
 
     ContentAdapter(Context context) {
+        this.context = context;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -27,7 +32,27 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.subtitle.setText(String.valueOf(position));
+
+        List<String> listDataGroup = new ArrayList<>();
+        List<String> indexGroup = new ArrayList<>();
+        HashMap<String, List<String>> listDataChild = new HashMap<>();
+        listDataGroup.add(this.context.getResources().getString(R.string.text_alcohol));
+        indexGroup.add(String.valueOf(position + 1));
+
+        // array of strings
+        String[] array;
+
+        // list of alcohol
+        List<String> alcoholList = new ArrayList<>();
+        array = this.context.getResources().getStringArray(R.array.string_array_alcohol);
+        for (String item : array) {
+            alcoholList.add(item);
+        }
+
+        // Adding child data
+        listDataChild.put(listDataGroup.get(0), alcoholList);
+        holder.setContent(listDataGroup, indexGroup, listDataChild);
+
     }
 
     @Override
