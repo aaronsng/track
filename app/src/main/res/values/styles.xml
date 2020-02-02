@@ -30,10 +30,5 @@
 
     <style name="AppTheme2" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 
-    <style name="ShapeAppearanceOverlayExtended" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">100dp</item>
-    </style>
-
 
 </resources>

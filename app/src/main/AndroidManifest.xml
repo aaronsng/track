@@ -9,29 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".TutorialRefreshersV2"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_tutorial_refreshers_v2"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/FullscreenTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="lta.amazoning.track.MainActivity" />
-        </activity>
-        <activity
-            android:name=".TutorialRefreshers"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_tutorial_refreshers"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/FullscreenTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="lta.amazoning.track.MainActivity" />
-        </activity>
+
         <activity
             android:name=".homepage3"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_homepage3"
             android:parentActivityName=".MainActivity"
             android:theme="@style/FullscreenTheme">

@@ -14,14 +14,14 @@ public class homepage3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage3);
 
-        button = (Button) findViewById(R.id.inspection_button);
+        button = findViewById(R.id.inspection_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openInspectionOverview();
             }
         });
-        button = (Button) findViewById(R.id.logout_button);
+        button = findViewById(R.id.logout_button);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View cv){
@@ -32,14 +32,14 @@ public class homepage3 extends AppCompatActivity {
     }
 
     public void openInspectionOverview() {
-        Intent intent = new Intent(this, InspectionOverview.class);
-        startActivity(intent);
+        Intent intent = new Intent(homepage3.this, InspectionOverview.class);
+        homepage3.this.startActivity(intent);
 
     }
 
     public void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(homepage3.this, MainActivity.class);
+        homepage3.this.startActivity(intent);
     }
 }
 

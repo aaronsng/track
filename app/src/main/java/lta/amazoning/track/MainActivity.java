@@ -14,13 +14,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent myIntent = new Intent(MainActivity.this, InspectionOverview.class);
-        MainActivity.this.startActivity(myIntent);
+
         login = findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, InspectionOverview.class);
+                Intent myIntent = new Intent(MainActivity.this, homepage3.class);
                 MainActivity.this.startActivity(myIntent);
             }
         });
