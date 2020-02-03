@@ -2,44 +2,54 @@ package lta.amazoning.track;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 public class homepage3 extends AppCompatActivity {
-    private Button button;
+    private Toolbar tool_bar;
+    private String idFault = "123-456";
+    private boolean navigated_home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage3);
+        setContentView(R.layout.activity_inspection_overview);
 
-        button = findViewById(R.id.inspection_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        final HomepageFragment homeFrag = new HomepageFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.homepage, homeFrag);
+        ft.commit();
+
+        navigated_home = true;
+        tool_bar = findViewById(R.id.tool_bar);
+        tool_bar.setTitle("Inspection #" + idFault);
+        setSupportActionBar(tool_bar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        tool_bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openInspectionOverview();
+            public void onClick(View v){
+                if (homeFrag.navigated_inspection) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.homepage, homeFrag);
+                    ft.commit();
+                    navigated_home = true;
+                    homeFrag.navigated_inspection = false;
+                }
+                else if (navigated_home) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-        button = findViewById(R.id.logout_button);
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View cv){
-                openMainActivity();
-            }
-        });
-
-    }
-
-    public void openInspectionOverview() {
-        Intent intent = new Intent(homepage3.this, InspectionOverview.class);
-        homepage3.this.startActivity(intent);
-
-    }
-
-    public void openMainActivity(){
-        Intent intent = new Intent(homepage3.this, MainActivity.class);
-        homepage3.this.startActivity(intent);
     }
 }
 

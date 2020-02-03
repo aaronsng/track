@@ -48,7 +48,6 @@ class CustomBehavior extends CoordinatorLayout.Behavior<NestedScrollView> {
         final View cardContainer = child.findViewById(R.id.card_container);
         final int toolbarContainerHeight =
                 parent.getDependencies(child).get(0).getHeight();
-        setPaddingTop(cardContainer, rvMaxHeight - toolbarContainerHeight);
         setPaddingTop(cardContainer, rvMaxHeight - toolbarContainerHeight * 10);
 
         // Offset the child's height so that its bounds don't overlap the
@@ -57,7 +56,7 @@ class CustomBehavior extends CoordinatorLayout.Behavior<NestedScrollView> {
 
         // Add the same amount of bottom padding to the RecyclerView so it doesn't
         // display its content underneath the navigation bar.
-        setPaddingBottom(rv, toolbarContainerHeight);
+        //setPaddingBottom(rv, toolbarContainerHeight);
         setPaddingBottom(rv, toolbarContainerHeight * 2);
 
         // Return true so that the parent doesn't waste time laying out the

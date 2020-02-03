@@ -5,6 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:id="@+id/list_row_group"
     android:background="@drawable/defect_shape"
     android:paddingTop="12dp"
     android:paddingBottom="12dp">

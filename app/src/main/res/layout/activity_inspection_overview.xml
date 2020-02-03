@@ -5,9 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".InspectionOverview">
+    tools:context=".homepage3">
 
-    <FrameLayout
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:layout_anchor="@id/btm_bar"
+        app:srcCompat="@drawable/plus" />
+
+
+    <RelativeLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,34 +33,13 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/homepage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tool_bar"/>
 
-
-    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab3"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab1"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        app:srcCompat="@android:drawable/ic_dialog_map" />-->
-
-    <include layout="@layout/content_inspection_overview" />
+    </RelativeLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/btm_bar"
@@ -103,12 +92,12 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@android:color/holo_red_light"
-        app:layout_anchor="@id/btm_bar"
-        app:srcCompat="@drawable/plus" />
+    <!--fragment
+        android:name="lta.amazoning.track.InspectionOverview"
+        android:id="@+id/inspection_overview"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" /-->
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

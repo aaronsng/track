@@ -18,7 +18,7 @@ import java.util.List;
 //class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //    private static final int ITEM_COUNT = 5;
 class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-    private static final int ITEM_COUNT = 5;
+    private static final int ITEM_COUNT = 6;
     private final LayoutInflater mInflater;
     private Context context;
 
@@ -39,6 +39,21 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 //    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
     public void onBindViewHolder(ViewHolder holder, int position) {
+        if (position == ITEM_COUNT - 1) {
+            List<String> listDataGroup = new ArrayList<>();
+            List<String> indexGroup = new ArrayList<>();
+            HashMap<String, List<String>> listDataChild = new HashMap<>();
+            listDataGroup.add("");
+            indexGroup.add("e");
+
+            // array of strings
+            String[] array;
+
+            // Adding child data
+            holder.setContent(listDataGroup, indexGroup, listDataChild);
+            return;
+        }
+
         List<String> listDataGroup = new ArrayList<>();
         List<String> indexGroup = new ArrayList<>();
         HashMap<String, List<String>> listDataChild = new HashMap<>();

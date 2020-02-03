@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +52,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
-        if (convertView == null) {
+        if (convertView == null && this.indexGroup.get(groupPosition) != "e") {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_row_child, null);
@@ -65,6 +67,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
+        if (indexGroup.get(groupPosition) == "e") return 0;
         return this.listDataChild.get(this.listDataGroup.get(groupPosition))
                 .size();
     }
@@ -104,7 +107,22 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         //        .findViewById(R.id.textViewGroup);
         //textViewGroup.setTypeface(null, Typeface.BOLD);
         //textViewGroup.setText(headerTitle);
+        ConstraintLayout r = convertView.findViewById(R.id.list_row_group);
         TextView number = convertView.findViewById(R.id.number);
+        TextView defectLocation = convertView.findViewById(R.id.defect_location);
+        TextView defectInfo = convertView.findViewById(R.id.defect_info);
+
+        if (indexGroup.get(groupPosition) == "e") {
+            int color = convertView.getContext().getColor(R.color.colorPrimaryDark);
+            r.setBackgroundColor(color);
+            number.setBackgroundColor(color);
+            defectLocation.setBackgroundColor(color);
+            defectLocation.setTextColor(color);
+            defectInfo.setBackgroundColor(color);
+            defectInfo.setTextColor(color);
+            return convertView;
+        }
+
         number.setText(index);
         return convertView;
     }

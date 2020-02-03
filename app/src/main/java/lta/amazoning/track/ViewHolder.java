@@ -26,19 +26,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                 return false;
             }
         });
-
-        expandableListView.setOnGroupExpandListener(new CustomExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-            }
-        });
-
-        expandableListView.setOnGroupCollapseListener(new CustomExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-
-            }
-        });
     }
 
     public void setContent(List<String> d, List<String> i, HashMap<String, List<String>> c)  {
