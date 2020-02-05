@@ -58,4 +58,44 @@
         <item>Juice</item>
         <item>Sparkling Water</item>
     </string-array>
+
+    <string name="newinspectionmain1">You are about to start a new inspection!</string>
+    <string name="newinspectionmain2">Please enter details:"</string>
+    <string name="stationstart_prompt">Station Start:</string>
+    <string name="stationend_prompt">Station End:</string>
+    <string name="bound_prompt">Bound:</string>
+    <string name="sectorcode_prompt">Sector Code:</string>
+    <string name="accompany_prompt">Accompanied By:</string>
+
+    <string-array name="stations_arrays">
+        <item>Bukit China</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+    <string-array name="bound_arrays">
+        <item>Changi</item>
+        <item>Jurong East</item>
+        <item>Wuhan</item>
+    </string-array>
+
+    <string-array name="sector_arrays">
+        <item>Sector 1</item>
+        <item>Sector 2</item>
+        <item>Sector 3</item>
+    </string-array>
+
+    <string-array name="accompany_array">
+        <item>Tom</item>
+        <item>Dick</item>
+        <item>Harry</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,4 +5,10 @@
     <dimen name="standard_55">55dp</dimen>
     <dimen name="standard_105">105dp</dimen>
     <dimen name="standard_155">155dp</dimen>
+    <dimen name="spinner_height">30dp</dimen>
+    <dimen name="spinner_width">175dp</dimen>
+    <dimen name="textsize_Xsmall">12</dimen>
+    <dimen name="textsize_Small">17</dimen>
+    <dimen name="textsize_Medium">25</dimen>
+    <dimen name="textsize_Large">33</dimen>
 </resources>
