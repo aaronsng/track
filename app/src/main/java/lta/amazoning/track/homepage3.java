@@ -24,6 +24,8 @@ public class homepage3 extends AppCompatActivity {
         setContentView(R.layout.activity_inspection_overview);
 
         final HomepageFragment homeFrag = new HomepageFragment();
+        final NewInspectionFragment newHome = new NewInspectionFragment();
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, homeFrag);
         ft.commit();

@@ -7,8 +7,10 @@
     <dimen name="standard_155">155dp</dimen>
     <dimen name="spinner_height">30dp</dimen>
     <dimen name="spinner_width">175dp</dimen>
-    <dimen name="textsize_Xsmall">12</dimen>
-    <dimen name="textsize_Small">17</dimen>
-    <dimen name="textsize_Medium">25</dimen>
-    <dimen name="textsize_Large">33</dimen>
+    <dimen name="textsize_Xsmall">12dp</dimen>
+    <dimen name="textsize_Small">17dp</dimen>
+    <dimen name="textsize_Medium">25dp</dimen>
+    <dimen name="textsize_Large">33dp</dimen>
+    <dimen name="option_paddingleft">20dp</dimen>
+    <dimen name="option_width">170dp</dimen>
 </resources>
