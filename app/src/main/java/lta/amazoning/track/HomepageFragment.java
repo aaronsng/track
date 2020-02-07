@@ -34,7 +34,7 @@ public class HomepageFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openInspectionOverview();
+                openNewInspectionFragment();
             }
         });
         button = view.findViewById(R.id.logout_button);
@@ -53,6 +53,12 @@ public class HomepageFragment extends Fragment {
         mIntent = mFrgAct.getIntent(); //  Intent intent = new Intent(getActivity().getIntent());
     }
 
+    public void openNewInspectionFragment(){
+        FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.homepage, new NewInspectionFragment());
+        ft.commit();
+        navigated_inspection = true;
+    }
 
     public void openInspectionOverview() {
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();

@@ -13,7 +13,7 @@
         android:layout_width="411dp"
         android:layout_height="143dp"
         android:background="@drawable/round_shape_firstpage"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

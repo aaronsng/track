@@ -88,35 +88,30 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationstartadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationstartspinner.setAdapter(stationstartadapter);
-        stationstartspinner.setOnItemSelectedListener(this);
 
         Spinner stationendspinner = view.findViewById(R.id.stationendspinner);
         ArrayAdapter<CharSequence> stationendadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationendadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationendspinner.setAdapter(stationendadapter);
-        stationendspinner.setOnItemSelectedListener(this);
 
         Spinner boundspinner = view.findViewById(R.id.boundspinner);
         ArrayAdapter<CharSequence> boundadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.bound_arrays, android.R.layout.simple_spinner_item);
         boundadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boundspinner.setAdapter(boundadapter);
-        boundspinner.setOnItemSelectedListener(this);
 
         Spinner sectorcodespinner = view.findViewById(R.id.sectorcodespinner);
         ArrayAdapter<CharSequence> sectorcodeadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.sector_arrays, android.R.layout.simple_spinner_item);
         sectorcodeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorcodespinner.setAdapter(sectorcodeadapter);
-        sectorcodespinner.setOnItemSelectedListener(this);
 
         Spinner accompaniedbyspinner = view.findViewById(R.id.accompaniedbyspinner);
         ArrayAdapter<CharSequence> accompaniedbyadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.accompany_array, android.R.layout.simple_spinner_item);
         accompaniedbyadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accompaniedbyspinner.setAdapter(accompaniedbyadapter);
-        accompaniedbyspinner.setOnItemSelectedListener(this);
     }
 
     @Override

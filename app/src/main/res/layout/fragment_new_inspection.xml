@@ -43,16 +43,15 @@
         android:id="@+id/stationstart"
         android:layout_width="@dimen/option_width"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="right"
+        android:paddingLeft="@dimen/option_paddingleft"
         android:text="@string/stationstart_prompt"
         android:textAppearance="@style/newinspection3"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:gravity="right"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newinspectionmain2"
-        app:layout_constraintVertical_bias="0.085"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="500dp" />
 
@@ -60,16 +59,17 @@
         android:id="@+id/stationend"
         android:layout_width="@dimen/option_width"
         android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingLeft="@dimen/option_paddingleft"
         android:text="@string/stationend_prompt"
         android:textAppearance="@style/newinspection3"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stationstart"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="500dp" />
 
@@ -81,12 +81,13 @@
         android:textAppearance="@style/newinspection3"
         android:paddingLeft="@dimen/option_paddingleft"
         android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stationend"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="500dp" />
 
@@ -98,12 +99,13 @@
         android:textAppearance="@style/newinspection3"
         android:paddingLeft="@dimen/option_paddingleft"
         android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bound"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="500dp" />
 
@@ -115,84 +117,115 @@
         android:textAppearance="@style/newinspection3"
         android:paddingLeft="@dimen/option_paddingleft"
         android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sectorcode"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="500dp" />
 
 
-    <Spinner
-        android:id="@+id/stationstartspinner"
+    <RelativeLayout
+        android:id="@+id/stationstartspinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="@style/newinspection3"
-        android:entries="@array/stations_arrays"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/stationstart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/stationstart"
+        app:layout_constraintStart_toEndOf="@+id/stationstart"
         app:layout_constraintTop_toTopOf="@+id/stationstart"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/stationstartspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/stations_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/stationendspinner"
+    <RelativeLayout
+        android:id="@+id/stationendspinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="@style/newinspection3"
-        android:entries="@array/stations_arrays"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/stationend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/stationend"
+        app:layout_constraintStart_toEndOf="@+id/stationend"
         app:layout_constraintTop_toTopOf="@+id/stationend"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/stationendspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/stations_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/boundspinner"
+    <RelativeLayout
+        android:id="@+id/boundspinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="@style/newinspection3"
-        android:entries="@array/bound_arrays"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/bound"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/bound"
+        app:layout_constraintStart_toEndOf="@+id/bound"
         app:layout_constraintTop_toTopOf="@+id/bound"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/boundspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/bound_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/sectorcodespinner"
+    <RelativeLayout
+        android:id="@+id/sectorcodespinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="@style/newinspection3"
-        android:entries="@array/sector_arrays"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/sectorcode"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/sectorcode"
+        app:layout_constraintStart_toEndOf="@+id/sectorcode"
         app:layout_constraintTop_toTopOf="@+id/sectorcode"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/sectorcodespinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/sector_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/accompaniedbyspinner"
+    <RelativeLayout
+        android:id="@+id/accompaniedbyspinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="@style/newinspection3"
-        android:entries="@array/accompany_array"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/accompaniedby"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/accompaniedby"
+        app:layout_constraintStart_toEndOf="@+id/accompaniedby"
         app:layout_constraintTop_toTopOf="@+id/accompaniedby"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/accompaniedbyspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/accompany_array"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
 
    </androidx.constraintlayout.widget.ConstraintLayout>
