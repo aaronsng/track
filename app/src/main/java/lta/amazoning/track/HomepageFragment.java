@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class HomepageFragment extends Fragment {
 
     // True iff the shadow view between the card header and the RecyclerView
@@ -20,6 +22,17 @@ public class HomepageFragment extends Fragment {
     private FragmentActivity mFrgAct;
     private Button button;
     private Intent mIntent;
+    private FloatingActionButton fab;
+    private Button left_button;
+    private Button middle_button;
+    private Button right_button;
+
+    public HomepageFragment(FloatingActionButton fab, Button left_button, Button middle_button, Button right_button) {
+        this.fab = fab;
+        this.left_button = left_button;
+        this.middle_button = middle_button;
+        this.right_button = right_button;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +44,8 @@ public class HomepageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         button = view.findViewById(R.id.inspection_button);
+
+        left_button.setText("Settings");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,10 +71,9 @@ public class HomepageFragment extends Fragment {
 
     public void openInspectionOverview() {
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.homepage, new InspectionOverview());
+        ft.replace(R.id.homepage, new InspectionOverview(this.fab, this.left_button, this.middle_button, this.right_button));
         ft.commit();
         navigated_inspection = true;
-
     }
 
     public void openMainActivity(){

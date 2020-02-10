@@ -1,4 +1,7 @@
 package lta.amazoning.track;
 
-public class OnSpinnerItemSelectedListener {
+import android.view.View;
+
+public interface OnSpinnerItemSelectedListener {
+    void onItemSelected(NiceSpinner parent, View view, int position, long id);
 }

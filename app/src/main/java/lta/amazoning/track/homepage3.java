@@ -13,20 +13,35 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class homepage3 extends AppCompatActivity {
     private Toolbar tool_bar;
+    public BottomAppBar btm_bar;
     private String idFault = "123-456";
     private boolean navigated_home;
+    private Button left_button;
+    private Button middle_button;
+    private Button right_button;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inspection_overview);
 
-        final HomepageFragment homeFrag = new HomepageFragment();
+        left_button = findViewById(R.id.left_btn);
+        right_button = findViewById(R.id.right_btn);
+        middle_button = findViewById(R.id.middle_btn);
+        fab = findViewById(R.id.fab);
+
+        final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, homeFrag);
         ft.commit();
+
+        btm_bar = findViewById(R.id.btm_bar);
 
         navigated_home = true;
         tool_bar = findViewById(R.id.tool_bar);

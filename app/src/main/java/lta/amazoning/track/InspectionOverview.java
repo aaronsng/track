@@ -9,11 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,8 +30,18 @@ public class InspectionOverview extends Fragment {
     private Intent mIntent;
     private boolean mIsShowingCardHeaderShadow;
     private TextView inspectionSum;
-
     private String LOCATION = "PGL to SKG";
+    private FloatingActionButton fab;
+    private Button leftButton;
+    private Button middleButton;
+    private Button rightButton;
+
+    public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
+        this.fab = fab;
+        this.leftButton = leftButton;
+        this.middleButton = middleButton;
+        this.rightButton = rightButton;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,10 +54,7 @@ public class InspectionOverview extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         inspectionSum = view.findViewById(R.id.cardo_title);
 
-        SpannableString content = new SpannableString(LOCATION);
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-
-        inspectionSum.setText(inspectionSum.getText().toString() + " " + content);
+        inspectionSum.setText(inspectionSum.getText().toString() + " " + LOCATION);
 
         final RecyclerView rv = view.findViewById(R.id.card_recyclerview);
         final LinearLayoutManager lm = new LinearLayoutManager(getContext());
@@ -69,6 +78,13 @@ public class InspectionOverview extends Fragment {
                 }
             }
         });
+
+        this.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchNewInspection(fab, leftButton, middleButton, rightButton);
+            }
+        });
     }
 
     @Override
@@ -76,5 +92,11 @@ public class InspectionOverview extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mFrgAct = getActivity();
         mIntent = mFrgAct.getIntent(); //  Intent intent = new Intent(getActivity().getIntent());
+    }
+
+    public void launchNewInspection(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
+        FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.homepage, new UploadFragment(fab, leftButton, middleButton, rightButton));
+        ft.commit();
     }
 }

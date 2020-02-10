@@ -73,7 +73,6 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Adding child data
         listDataChild.put(listDataGroup.get(0), alcoholList);
         holder.setContent(listDataGroup, indexGroup, listDataChild);
-
     }
 
     @Override

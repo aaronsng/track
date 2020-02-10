@@ -57,8 +57,8 @@
             android:background="@drawable/round_rect_shape_inverted"
             app:backgroundTint="@color/colorPrimary">
 
-            <TextView
-                android:id="@+id/edit"
+            <Button
+                android:id="@+id/left_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -66,18 +66,42 @@
                 android:gravity="center"
                 android:minHeight="@dimen/btm_app_bar_size"
                 android:text="Edit/ End"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/emergency"
+            <Button
+                android:id="@+id/middle_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_rect_shape_middlebtn"
+                android:visibility="invisible"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:textColor="@android:color/white"
+                android:padding="@dimen/textsize_Small"
+                android:layout_margin="@dimen/textsize_Small"
+                android:textSize="@dimen/textsize_Small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/right_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
                 android:layout_marginEnd="32dp"
                 android:fontFamily="@font/raleway_semibold"
+                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:minHeight="@dimen/btm_app_bar_size"
                 android:text="Emergency"
