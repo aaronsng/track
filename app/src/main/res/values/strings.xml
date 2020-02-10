@@ -25,7 +25,7 @@
     <string name="log_out">Log Out</string>
     <string name="good_evening">Good Evening</string>
     <string name="according_to_schedule">According to schedule, you are to inspect PGL-SKG</string>
-    <string name="server_url">ec2-54-169-154-103.ap-southeast-1.compute.amazonaws.com</string>
+    <string name="server_url">54.169.154.103</string>
     <string-array name="string_array_alcohol">
         <item>Vodka</item>
         <item>Rum</item>
