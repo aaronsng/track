@@ -31,12 +31,18 @@ public class homepage3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inspection_overview);
 
+<<<<<<< HEAD
         left_button = findViewById(R.id.left_btn);
         right_button = findViewById(R.id.right_btn);
         middle_button = findViewById(R.id.middle_btn);
         fab = findViewById(R.id.fab);
 
         final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button);
+=======
+        final HomepageFragment homeFrag = new HomepageFragment();
+        final NewInspectionFragment newHome = new NewInspectionFragment();
+
+>>>>>>> 794ca25126d01f19ab9ed462a5ec9e2ed725fc73
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, homeFrag);
         ft.commit();

@@ -16,4 +16,8 @@
     <dimen name="one_and_a_half_grid_unit">12dp</dimen>
     <dimen name="spinner_upload_endmargin">40dp</dimen>
     <dimen name="standard_200">200dp</dimen>
+    <dimen name="option_paddingleft">20dp</dimen>
+    <dimen name="option_width">170dp</dimen>
+    <dimen name="spinner_vertbias">0</dimen>
+    <dimen name="spinner_margin">20dp</dimen>
 </resources>

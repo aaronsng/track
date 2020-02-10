@@ -7,12 +7,13 @@
     tools:context=".NewInspectionFragment"
     android:id="@+id/frameLayout">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/newinspectionmain1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/newinspectionmain1"
-        android:textAppearance="@style/newinspection"
+        android:textAppearance="@style/newinspection1"
+        android:paddingLeft="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.289"
@@ -22,4 +23,209 @@
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="411dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/newinspectionmain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newinspectionmain2"
+        android:textAppearance="@style/newinspection2"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newinspectionmain1"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
+
+    <TextView
+        android:id="@+id/stationstart"
+        android:layout_width="@dimen/option_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="right"
+        android:paddingLeft="@dimen/option_paddingleft"
+        android:text="@string/stationstart_prompt"
+        android:textAppearance="@style/newinspection3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newinspectionmain2"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
+
+    <TextView
+        android:id="@+id/stationend"
+        android:layout_width="@dimen/option_width"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingLeft="@dimen/option_paddingleft"
+        android:text="@string/stationend_prompt"
+        android:textAppearance="@style/newinspection3"
+        android:layout_marginTop="@dimen/spinner_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stationstart"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
+
+    <TextView
+        android:id="@+id/bound"
+        android:layout_width="@dimen/option_width"
+        android:layout_height="wrap_content"
+        android:text="@string/bound_prompt"
+        android:textAppearance="@style/newinspection3"
+        android:paddingLeft="@dimen/option_paddingleft"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stationend"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
+
+    <TextView
+        android:id="@+id/sectorcode"
+        android:layout_width="@dimen/option_width"
+        android:layout_height="wrap_content"
+        android:text="@string/sectorcode_prompt"
+        android:textAppearance="@style/newinspection3"
+        android:paddingLeft="@dimen/option_paddingleft"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bound"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
+
+    <TextView
+        android:id="@+id/accompaniedby"
+        android:layout_width="@dimen/option_width"
+        android:layout_height="wrap_content"
+        android:text="@string/accompany_prompt"
+        android:textAppearance="@style/newinspection3"
+        android:paddingLeft="@dimen/option_paddingleft"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/spinner_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sectorcode"
+        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
+        tools:layout_conversion_absoluteHeight="138dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/stationstartspinnerholder"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/stationstart"
+        app:layout_constraintStart_toEndOf="@+id/stationstart"
+        app:layout_constraintTop_toTopOf="@+id/stationstart"
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/stationstartspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/stations_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/stationendspinnerholder"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/stationend"
+        app:layout_constraintStart_toEndOf="@+id/stationend"
+        app:layout_constraintTop_toTopOf="@+id/stationend"
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/stationendspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/stations_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/boundspinnerholder"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/bound"
+        app:layout_constraintStart_toEndOf="@+id/bound"
+        app:layout_constraintTop_toTopOf="@+id/bound"
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/boundspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/bound_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sectorcodespinnerholder"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/sectorcode"
+        app:layout_constraintStart_toEndOf="@+id/sectorcode"
+        app:layout_constraintTop_toTopOf="@+id/sectorcode"
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/sectorcodespinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/sector_arrays"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accompaniedbyspinnerholder"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/accompaniedby"
+        app:layout_constraintStart_toEndOf="@+id/accompaniedby"
+        app:layout_constraintTop_toTopOf="@+id/accompaniedby"
+        app:layout_constraintVertical_bias="0.481">
+        <Spinner
+            android:id="@+id/accompaniedbyspinner"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/accompany_array"
+            android:textAppearance="@style/newinspectionspinner"
+            android:backgroundTint="@color/colorDarkRed">
+        </Spinner>
+    </RelativeLayout>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
