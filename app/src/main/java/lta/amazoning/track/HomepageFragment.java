@@ -49,7 +49,7 @@ public class HomepageFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewInspectionFragment();
+                openInspectionOverview();
             }
         });
         button = view.findViewById(R.id.logout_button);
@@ -57,6 +57,13 @@ public class HomepageFragment extends Fragment {
             @Override
             public void onClick(View cv){
                 openMainActivity();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewInspectionFragment();
             }
         });
     }

@@ -116,6 +116,12 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btm_app_bar_size"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"></LinearLayout>
+
     <!--fragment
         android:name="lta.amazoning.track.InspectionOverview"
         android:id="@+id/inspection_overview"

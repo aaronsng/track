@@ -132,20 +132,19 @@
         android:id="@+id/stationstartspinnerholder"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_margin="24dp"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/stationstart"
         app:layout_constraintStart_toEndOf="@+id/stationstart"
         app:layout_constraintTop_toTopOf="@+id/stationstart"
         app:layout_constraintVertical_bias="0.481">
-        <Spinner
+        <lta.amazoning.track.NiceSpinner
             android:id="@+id/stationstartspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/stations_arrays"
-            android:textAppearance="@style/newinspectionspinner"
-            android:backgroundTint="@color/colorDarkRed">
-        </Spinner>
+            android:textAppearance="@style/newinspectionspinner">
+        </lta.amazoning.track.NiceSpinner>
     </RelativeLayout>
 
     <RelativeLayout
@@ -153,19 +152,18 @@
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/stationend"
         app:layout_constraintStart_toEndOf="@+id/stationend"
         app:layout_constraintTop_toTopOf="@+id/stationend"
         app:layout_constraintVertical_bias="0.481">
-        <Spinner
+        <lta.amazoning.track.NiceSpinner
             android:id="@+id/stationendspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/stations_arrays"
-            android:textAppearance="@style/newinspectionspinner"
-            android:backgroundTint="@color/colorDarkRed">
-        </Spinner>
+            android:textAppearance="@style/newinspectionspinner">
+        </lta.amazoning.track.NiceSpinner>
     </RelativeLayout>
 
     <RelativeLayout
@@ -173,19 +171,18 @@
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/bound"
         app:layout_constraintStart_toEndOf="@+id/bound"
         app:layout_constraintTop_toTopOf="@+id/bound"
         app:layout_constraintVertical_bias="0.481">
-        <Spinner
+        <lta.amazoning.track.NiceSpinner
             android:id="@+id/boundspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/bound_arrays"
-            android:textAppearance="@style/newinspectionspinner"
-            android:backgroundTint="@color/colorDarkRed">
-        </Spinner>
+            android:textAppearance="@style/newinspectionspinner">
+        </lta.amazoning.track.NiceSpinner>
     </RelativeLayout>
 
     <RelativeLayout
@@ -193,19 +190,18 @@
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/sectorcode"
         app:layout_constraintStart_toEndOf="@+id/sectorcode"
         app:layout_constraintTop_toTopOf="@+id/sectorcode"
         app:layout_constraintVertical_bias="0.481">
-        <Spinner
+        <lta.amazoning.track.NiceSpinner
             android:id="@+id/sectorcodespinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/sector_arrays"
-            android:textAppearance="@style/newinspectionspinner"
-            android:backgroundTint="@color/colorDarkRed">
-        </Spinner>
+            android:textAppearance="@style/newinspectionspinner">
+        </lta.amazoning.track.NiceSpinner>
     </RelativeLayout>
 
     <RelativeLayout
@@ -213,19 +209,18 @@
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/accompaniedby"
         app:layout_constraintStart_toEndOf="@+id/accompaniedby"
         app:layout_constraintTop_toTopOf="@+id/accompaniedby"
         app:layout_constraintVertical_bias="0.481">
-        <Spinner
+        <lta.amazoning.track.NiceSpinner
             android:id="@+id/accompaniedbyspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/accompany_array"
-            android:textAppearance="@style/newinspectionspinner"
-            android:backgroundTint="@color/colorDarkRed">
-        </Spinner>
+            android:textAppearance="@style/newinspectionspinner">
+        </lta.amazoning.track.NiceSpinner>
     </RelativeLayout>
 
    </androidx.constraintlayout.widget.ConstraintLayout>

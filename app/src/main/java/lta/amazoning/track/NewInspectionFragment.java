@@ -83,31 +83,31 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Spinner stationstartspinner = view.findViewById(R.id.stationstartspinner);
+        NiceSpinner stationstartspinner = view.findViewById(R.id.stationstartspinner);
         ArrayAdapter<CharSequence> stationstartadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationstartadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationstartspinner.setAdapter(stationstartadapter);
 
-        Spinner stationendspinner = view.findViewById(R.id.stationendspinner);
+        NiceSpinner stationendspinner = view.findViewById(R.id.stationendspinner);
         ArrayAdapter<CharSequence> stationendadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationendadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationendspinner.setAdapter(stationendadapter);
 
-        Spinner boundspinner = view.findViewById(R.id.boundspinner);
+        NiceSpinner boundspinner = view.findViewById(R.id.boundspinner);
         ArrayAdapter<CharSequence> boundadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.bound_arrays, android.R.layout.simple_spinner_item);
         boundadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boundspinner.setAdapter(boundadapter);
 
-        Spinner sectorcodespinner = view.findViewById(R.id.sectorcodespinner);
+        NiceSpinner sectorcodespinner = view.findViewById(R.id.sectorcodespinner);
         ArrayAdapter<CharSequence> sectorcodeadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.sector_arrays, android.R.layout.simple_spinner_item);
         sectorcodeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorcodespinner.setAdapter(sectorcodeadapter);
 
-        Spinner accompaniedbyspinner = view.findViewById(R.id.accompaniedbyspinner);
+        NiceSpinner accompaniedbyspinner = view.findViewById(R.id.accompaniedbyspinner);
         ArrayAdapter<CharSequence> accompaniedbyadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.accompany_array, android.R.layout.simple_spinner_item);
         accompaniedbyadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
