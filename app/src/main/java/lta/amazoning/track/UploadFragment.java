@@ -56,7 +56,7 @@ import okhttp3.Response;
 
 
 public class UploadFragment extends Fragment {
-    private static final String url = "13.250.127.57";
+    private String url;
     private ImageView toUpload;
     private Button upload;
     private ImageButton takePicture;
@@ -106,7 +106,7 @@ public class UploadFragment extends Fragment {
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-
+        url = getActivity().getResources().getText(R.string.server_url).toString();
 
         middleButton.setText(getActivity().getResources().getText(R.string.cr8andUpload));
         toUpload = view.findViewById(R.id.imageHolder);
