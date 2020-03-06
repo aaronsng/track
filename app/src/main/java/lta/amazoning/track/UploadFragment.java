@@ -288,16 +288,6 @@ public class UploadFragment extends Fragment {
         jsonObject.put("others", others.getText().toString());
         Log.i("Lel", jsonObject.toString());
 
-//        private NiceSpinner chFrSpinner;
-//        private NiceSpinner chToSpinner;
-//        private NiceSpinner defectSpinner;
-//        private NiceSpinner railLouRSpinner;
-//        private NiceSpinner pointSpinner;
-//        private NiceSpinner tunnelSpinner;
-//        private NiceSpinner dropMinSpinner;
-//        private NiceSpinner newCurrentSpinner;
-//        private EditText others;
-
         RequestBody postBodyJSON = RequestBody.create(JSON, jsonObject.toString());
 
         RequestBody postBodyImage = new MultipartBody.Builder()
