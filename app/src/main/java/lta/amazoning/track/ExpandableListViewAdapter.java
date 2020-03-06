@@ -113,7 +113,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView defectInfo = convertView.findViewById(R.id.defect_info);
 
         if (indexGroup.get(groupPosition) == "e") {
-            int color = convertView.getContext().getColor(R.color.colorPrimaryDark);
+            int color = convertView.getContext().getColor(android.R.color.white);
             r.setBackgroundColor(color);
             number.setBackgroundColor(color);
             defectLocation.setBackgroundColor(color);

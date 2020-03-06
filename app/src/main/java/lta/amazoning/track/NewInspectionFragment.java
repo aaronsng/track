@@ -1,58 +1,48 @@
 package lta.amazoning.track;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link NewInspectionFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link NewInspectionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class NewInspectionFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentActivity mFrgAct;
+    private Intent mIntent;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FloatingActionButton fab;
+    private Button left;
+    private Button middle;
+    private Button right;
+    private NiceSpinner stationstartspinner, stationendspinner, boundspinner, sectorcodespinner, accompaniedbyspinner;
+    private InspectionOverview instance;
 
-    private OnFragmentInteractionListener mListener;
+    public NewInspectionFragment(FloatingActionButton fab, Button left, Button middle, Button right) {
+        this.fab = fab;
+        this.left = left;
+        this.middle = middle;
+        this.right = right;
 
-    public NewInspectionFragment() {
-        // Required empty public constructor
+        left.setVisibility(View.INVISIBLE);
+        right.setVisibility(View.INVISIBLE);
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewInspectionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewInspectionFragment newInstance(String param1, String param2) {
-        NewInspectionFragment fragment = new NewInspectionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -66,12 +56,41 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mFrgAct = getActivity();
+        mIntent = mFrgAct.getIntent(); //  Intent intent = new Intent(getActivity().getIntent());
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("Start", stationstartspinner.getSelectedItem().toString());
+                    jsonObject.put("End", stationendspinner.getSelectedItem().toString());
+                    jsonObject.put("Bound", boundspinner.getSelectedItem().toString());
+                    jsonObject.put("Sector", sectorcodespinner.getSelectedItem().toString());
+                    jsonObject.put("Accompanied", accompaniedbyspinner.getSelectedItem().toString());
+
+                    left.setVisibility(View.VISIBLE);
+                    right.setVisibility(View.VISIBLE);
+                    instance = new InspectionOverview(fab, left, middle, right);
+                    FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.homepage, instance);
+                    Log.i("NewInspectionFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
+                    ft.commit();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
@@ -83,31 +102,31 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        NiceSpinner stationstartspinner = view.findViewById(R.id.stationstartspinner);
+        stationstartspinner = view.findViewById(R.id.stationstartspinner);
         ArrayAdapter<CharSequence> stationstartadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationstartadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationstartspinner.setAdapter(stationstartadapter);
 
-        NiceSpinner stationendspinner = view.findViewById(R.id.stationendspinner);
+        stationendspinner = view.findViewById(R.id.stationendspinner);
         ArrayAdapter<CharSequence> stationendadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
         stationendadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stationendspinner.setAdapter(stationendadapter);
 
-        NiceSpinner boundspinner = view.findViewById(R.id.boundspinner);
+        boundspinner = view.findViewById(R.id.boundspinner);
         ArrayAdapter<CharSequence> boundadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.bound_arrays, android.R.layout.simple_spinner_item);
         boundadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boundspinner.setAdapter(boundadapter);
 
-        NiceSpinner sectorcodespinner = view.findViewById(R.id.sectorcodespinner);
+        sectorcodespinner = view.findViewById(R.id.sectorcodespinner);
         ArrayAdapter<CharSequence> sectorcodeadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.sector_arrays, android.R.layout.simple_spinner_item);
         sectorcodeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorcodespinner.setAdapter(sectorcodeadapter);
 
-        NiceSpinner accompaniedbyspinner = view.findViewById(R.id.accompaniedbyspinner);
+        accompaniedbyspinner = view.findViewById(R.id.accompaniedbyspinner);
         ArrayAdapter<CharSequence> accompaniedbyadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.accompany_array, android.R.layout.simple_spinner_item);
         accompaniedbyadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -117,19 +136,8 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

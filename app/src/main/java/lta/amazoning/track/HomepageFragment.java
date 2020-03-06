@@ -2,11 +2,14 @@ package lta.amazoning.track;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -19,6 +22,11 @@ public class HomepageFragment extends Fragment {
     // True iff the shadow view between the card header and the RecyclerView
     // is currently showing.
     public boolean navigated_inspection = false;
+    public boolean navigated_upload = false;
+
+    private InspectionOverview instance_inspection;
+    private NewInspectionFragment new_inspection;
+
     private FragmentActivity mFrgAct;
     private Button button;
     private Intent mIntent;
@@ -76,17 +84,23 @@ public class HomepageFragment extends Fragment {
     }
 
     public void openNewInspectionFragment(){
+        new_inspection = new NewInspectionFragment(this.fab, this.left_button, this.middle_button, this.right_button);
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.homepage, new NewInspectionFragment());
+        ft.replace(R.id.homepage, new_inspection);
+        ft.addToBackStack("NewInspection");
         ft.commit();
         navigated_inspection = true;
     }
 
     public void openInspectionOverview() {
+        instance_inspection = new InspectionOverview(this.fab, this.left_button, this.middle_button, this.right_button);
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.homepage, new InspectionOverview(this.fab, this.left_button, this.middle_button, this.right_button));
+        ft.replace(R.id.homepage, instance_inspection);
+        ft.addToBackStack("Inspection");
         ft.commit();
+        Log.i("HomepageFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
         navigated_inspection = true;
+        navigated_upload = instance_inspection.navigated_upload;
     }
 
     public void openMainActivity(){

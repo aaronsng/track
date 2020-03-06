@@ -16,8 +16,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -38,6 +38,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +96,8 @@ public class UploadFragment extends Fragment {
         this.leftButton = leftButton;
         this.middleButton = middleButton;
         this.rightButton = rightButton;
-        fab.setVisibility(View.INVISIBLE);
+
+        fab.hide();
         leftButton.setVisibility(View.INVISIBLE);
         rightButton.setVisibility(View.INVISIBLE);
         middleButton.setVisibility(View.VISIBLE);
@@ -335,14 +337,5 @@ public class UploadFragment extends Fragment {
                 });
             }
         });
-    }
-
-    public String getRealPathFromURI(Uri contentUri) {
-        String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getActivity().managedQuery(contentUri, proj, null, null, null);
-        int column_index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
     }
 }

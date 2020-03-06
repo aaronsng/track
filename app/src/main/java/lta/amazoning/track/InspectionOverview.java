@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -35,6 +37,8 @@ public class InspectionOverview extends Fragment {
     private Button leftButton;
     private Button middleButton;
     private Button rightButton;
+
+    public boolean navigated_upload = false;
 
     public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
         this.fab = fab;
@@ -97,6 +101,9 @@ public class InspectionOverview extends Fragment {
     public void launchNewInspection(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, new UploadFragment(fab, leftButton, middleButton, rightButton));
+        ft.addToBackStack("Upload");
+        navigated_upload = true;
+        Log.i("InspectionOverview", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
         ft.commit();
     }
 }

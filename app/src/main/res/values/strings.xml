@@ -44,14 +44,20 @@
 
     <string-array name="stations_arrays">
         <item> </item>
-        <item>Bukit China</item>
-        <item>United States</item>
-        <item>Wuhan</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
+        <item>Punggol</item>
+        <item>Damai</item>
+        <item>Oasis</item>
+        <item>Kadaloor</item>
+        <item>Riviera</item>
+        <item>Coral Edge</item>
+        <item>Meridian</item>
+        <item>Cove</item>
+        <item>Sam Kee</item>
+        <item>Punggol Point</item>
+        <item>Samudera</item>
+        <item>Nibong</item>
+        <item>Sumang</item>
+        <item>Soo Teck</item>
     </string-array>
 
     <string-array name="left_or_right_array">
@@ -92,18 +98,20 @@
     </string-array>
 
     <string-array name="bound_arrays">
-        <item>Changi</item>
-        <item>Jurong East</item>
-        <item>Wuhan</item>
+        <item> </item>
+        <item>Clockwise</item>
+        <item>Counterclockwise</item>
     </string-array>
 
     <string-array name="sector_arrays">
+        <item> </item>
         <item>Sector 1</item>
         <item>Sector 2</item>
         <item>Sector 3</item>
     </string-array>
 
     <string-array name="accompany_array">
+        <item> </item>
         <item>Tom</item>
         <item>Dick</item>
         <item>Harry</item>

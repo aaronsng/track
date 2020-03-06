@@ -3,6 +3,7 @@ package lta.amazoning.track;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -36,34 +37,45 @@ public class homepage3 extends AppCompatActivity {
         middle_button = findViewById(R.id.middle_btn);
         fab = findViewById(R.id.fab);
 
-        final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button);
-        final NewInspectionFragment newHome = new NewInspectionFragment();
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.homepage, homeFrag);
-        ft.commit();
-
-        btm_bar = findViewById(R.id.btm_bar);
-
         navigated_home = true;
         tool_bar = findViewById(R.id.tool_bar);
         tool_bar.setTitle("Inspection #" + idFault);
         setSupportActionBar(tool_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.homepage, homeFrag);
+        ft.addToBackStack("Homepage");
+        navigated_home = false;
+        ft.commit();
+
+        btm_bar = findViewById(R.id.btm_bar);
+
+
         tool_bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                if (homeFrag.navigated_inspection) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.homepage, homeFrag);
-                    ft.commit();
+                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+//                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.homepage, homeFrag);
+//                    ft.commit();
                     navigated_home = true;
-                    homeFrag.navigated_inspection = false;
-                }
-                else if (navigated_home) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+//                    homeFrag.navigated_inspection = false;
+                }
+                else {
+                    Log.i("HomepageActivity", "Back stack count " + Integer.toString(getSupportFragmentManager().getBackStackEntryCount()));
+                    getSupportFragmentManager().popBackStackImmediate();
+                }
+
+                if (!homeFrag.navigated_upload) {
+                    fab.show();
+                    left_button.setVisibility(View.VISIBLE);
+                    right_button.setVisibility(View.VISIBLE);
+                    middle_button.setVisibility(View.INVISIBLE);
                 }
             }
         });
