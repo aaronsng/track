@@ -84,8 +84,6 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
                     ft.replace(R.id.homepage, instance);
                     Log.i("NewInspectionFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
                     ft.commit();
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
