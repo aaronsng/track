@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -64,7 +65,14 @@ public class UploadFragment extends Fragment {
     private ImageButton takePicture;
 
     private NiceSpinner chFrSpinner;
+    private NiceSpinner chToSpinner;
+    private NiceSpinner defectSpinner;
     private NiceSpinner railLouRSpinner;
+    private NiceSpinner pointSpinner;
+    private NiceSpinner tunnelSpinner;
+    private NiceSpinner dropMinSpinner;
+    private NiceSpinner newCurrentSpinner;
+    private EditText others;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -110,27 +118,64 @@ public class UploadFragment extends Fragment {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         url = getActivity().getResources().getText(R.string.server_url).toString();
 
+        others = view.findViewById(R.id.edit_others_txt);
         middleButton.setText(getActivity().getResources().getText(R.string.cr8andUpload));
         toUpload = view.findViewById(R.id.imageHolder);
 
-        String[] arraySpinner = new String[] {
-                "1", "2", "3", "4", "5", "6", "7"
-        };
+        String[] arraySpinner = getActivity().getResources().getStringArray(R.array.stations_arrays);
         chFrSpinner = view.findViewById(R.id.chFr_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chFrSpinner.setAdapter(adapter);
 
-        String[] leftOrRightSpinner = new String[] {
-                " ", "Left", "Right"
-        };
+        chToSpinner = view.findViewById(R.id.chTo_spinner);
+        ArrayAdapter<String> chTo_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, arraySpinner);
+        chTo_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chToSpinner.setAdapter(chTo_adapter);
 
+        String[] leftOrRightSpinner = getActivity().getResources().getStringArray(R.array.left_or_right_array);
         railLouRSpinner = view.findViewById(R.id.railLouR_spinner);
         ArrayAdapter<String> rail_adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, leftOrRightSpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         railLouRSpinner.setAdapter(rail_adapter);
+
+        String[] defectDesc = getActivity().getResources().getStringArray(R.array.defect_array);
+        defectSpinner = view.findViewById(R.id.desc_spinner);
+        ArrayAdapter<String> defect_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, defectDesc);
+        defect_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        defectSpinner.setAdapter(defect_adapter);
+
+        String[] point = getActivity().getResources().getStringArray(R.array.yes_array);
+        pointSpinner = view.findViewById(R.id.point_spinner);
+        ArrayAdapter<String> point_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, point);
+        point_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pointSpinner.setAdapter(point_adapter);
+
+        String[] tunnelClk = getActivity().getResources().getStringArray(R.array.tunnel_array);
+        tunnelSpinner = view.findViewById(R.id.tunnel_spinner);
+        ArrayAdapter<String> tunnel_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, tunnelClk);
+        tunnel_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tunnelSpinner.setAdapter(tunnel_adapter);
+
+        String[] dropMin = getActivity().getResources().getStringArray(R.array.dropmin_array);
+        dropMinSpinner = view.findViewById(R.id.dropmin_spinner);
+        ArrayAdapter<String> dropmin_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, dropMin);
+        dropmin_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropMinSpinner.setAdapter(dropmin_adapter);
+
+        String[] newCurrent = getActivity().getResources().getStringArray(R.array.newcurrent_array);
+        newCurrentSpinner = view.findViewById(R.id.newcurrent_spinner);
+        ArrayAdapter<String> newcurrent_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, newCurrent);
+        newcurrent_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newCurrentSpinner.setAdapter(newcurrent_adapter);
 
         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 
@@ -221,6 +266,7 @@ public class UploadFragment extends Fragment {
     void connectServer(View view) throws JSONException {
         String postImageUrl= "http://"+ url +":"+"8082"+"/image";
         String postJsonUrl= "http://"+ url +":"+"8082"+"/json";
+        final String uid = String.valueOf(System.currentTimeMillis());
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -233,13 +279,30 @@ public class UploadFragment extends Fragment {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("leftOrRight", railLouRSpinner.getSelectedItem().toString());
         jsonObject.put("CHFr", chFrSpinner.getSelectedItem().toString());
+        jsonObject.put("CHTo", chToSpinner.getSelectedItem().toString());
+        jsonObject.put("defect", defectSpinner.getSelectedItem().toString());
+        jsonObject.put("point", pointSpinner.getSelectedItem().toString());
+        jsonObject.put("tunnel", tunnelSpinner.getSelectedItem().toString());
+        jsonObject.put("dropMin", dropMinSpinner.getSelectedItem().toString());
+        jsonObject.put("newCurrent", newCurrentSpinner.getSelectedItem().toString());
+        jsonObject.put("others", others.getText().toString());
         Log.i("Lel", jsonObject.toString());
+
+//        private NiceSpinner chFrSpinner;
+//        private NiceSpinner chToSpinner;
+//        private NiceSpinner defectSpinner;
+//        private NiceSpinner railLouRSpinner;
+//        private NiceSpinner pointSpinner;
+//        private NiceSpinner tunnelSpinner;
+//        private NiceSpinner dropMinSpinner;
+//        private NiceSpinner newCurrentSpinner;
+//        private EditText others;
 
         RequestBody postBodyJSON = RequestBody.create(JSON, jsonObject.toString());
 
         RequestBody postBodyImage = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("image", "transfer.jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
+                .addFormDataPart("image", "image" + uid + ".jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
                 .build();
 
         postRequest(postImageUrl, postBodyImage, view);

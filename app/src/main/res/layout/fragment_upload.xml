@@ -1,101 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UploadFragment">
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/imageHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/textsize_Xsmall"
-            android:adjustViewBounds="true"
-            android:background="@drawable/rect_image"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:contextClickable="false"
-            android:scaleType="centerCrop"
-            android:src="@drawable/holder" />
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:id="@+id/railLouR"
-            style="@style/uploadPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:text="@string/railLouR"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/railLouR_spinner"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <lta.amazoning.track.NiceSpinner
-            android:id="@+id/railLouR_spinner"
-            android:layout_width="@dimen/standard_200"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spinner_upload_endmargin"
-            android:fontFamily="@font/raleway_semibold"
-            android:layout_weight="1"
-            android:background="@drawable/rect_image"
-            app:layout_constraintBottom_toBottomOf="@+id/railLouR"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/railLouR" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        android:nestedScrollingEnabled="true"
+        android:layout_height="match_parent"
+        tools:context=".UploadFragment">
 
-        <TextView
-            android:id="@+id/chFr"
-            style="@style/uploadPage"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/raleway_semibold"
-            android:text="@string/chFr"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chFr_spinner"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <lta.amazoning.track.NiceSpinner
-            android:id="@+id/chFr_spinner"
-            android:layout_width="@dimen/standard_200"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_semibold"
-            android:layout_marginEnd="@dimen/spinner_upload_endmargin"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="@+id/chFr"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/chFr" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/imageHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/standard_155"
+                android:layout_margin="@dimen/textsize_Xsmall"
+                android:adjustViewBounds="true"
+                android:background="@drawable/rect_image"
+                android:clickable="true"
+                android:contextClickable="false"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:scaleType="centerCrop"
+                android:src="@drawable/holder" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/railLouR"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:text="@string/railLouR"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/railLouR_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/railLouR_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:fontFamily="@font/raleway_semibold"
+                android:layout_weight="1"
+                android:background="@drawable/rect_image"
+                app:layout_constraintBottom_toBottomOf="@+id/railLouR"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/railLouR" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <TextView
+                android:id="@+id/chFr"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/chFr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/chFr_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/chFr_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/chFr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/chFr" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+            <TextView
+                android:id="@+id/chTo"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/chTo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/chTo_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/chTo_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/chTo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/chTo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+
+            <TextView
+                android:id="@+id/desc"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/def_desc"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/desc_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/desc_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/desc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
+            <TextView
+                android:id="@+id/point"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/point"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/point_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/point_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/point"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/point" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+
+            <TextView
+                android:id="@+id/tunnel"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/tunnel_clk"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tunnel_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/tunnel_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/tunnel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tunnel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
+
+            <TextView
+                android:id="@+id/drop_min"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/drop_min"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dropmin_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/dropmin_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/drop_min"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/drop_min" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+            <TextView
+                android:id="@+id/new_current"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/new_current"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/newcurrent_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/newcurrent_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/new_current"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/new_current" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_others"
+            android:paddingHorizontal="@dimen/three_grid_unit"
+            android:paddingTop="@dimen/one_and_a_half_grid_unit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+
+            <EditText
+                android:id="@+id/edit_others_txt"
+                style="@style/uploadPage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/raleway_regular"
+                android:hint="@string/edit_others" />
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standard_75"
+            app:layout_constraintTop_toBottomOf="@+id/edit_others" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -25,37 +25,13 @@
     <string name="log_out">Log Out</string>
     <string name="good_evening">Good Evening</string>
     <string name="according_to_schedule">According to schedule, you are to inspect PGL-SKG</string>
-    <string name="server_url">54.169.154.103</string>
+    <string name="server_url">52.221.216.109</string>
     <string-array name="string_array_alcohol">
         <item>Vodka</item>
         <item>Rum</item>
         <item>Whiskey</item>
         <item>Gin</item>
         <item>Tequila</item>
-    </string-array>
-
-    <string-array name="string_array_coffee">
-        <item>Espresso</item>
-        <item>Macchiato</item>
-        <item>Cappuccino</item>
-        <item>Cafe Latte</item>
-        <item>Ristretto</item>
-    </string-array>
-
-    <string-array name="string_array_pasta">
-        <item>Carbonara</item>
-        <item>Capellini</item>
-        <item>Spaghetti</item>
-        <item>Gnocchi</item>
-        <item>Lasagnette</item>
-    </string-array>
-
-    <string-array name="string_array_cold_drinks">
-        <item>Cola</item>
-        <item>Lemonade</item>
-        <item>Citrus soda</item>
-        <item>Juice</item>
-        <item>Sparkling Water</item>
     </string-array>
 
     <string name="newinspectionmain1">You are about to start a new inspection!</string>
@@ -67,6 +43,7 @@
     <string name="accompany_prompt">Accompanied By:</string>
 
     <string-array name="stations_arrays">
+        <item> </item>
         <item>Bukit China</item>
         <item>United States</item>
         <item>Wuhan</item>
@@ -75,6 +52,43 @@
         <item>Singapore</item>
         <item>New Zealand</item>
         <item>India</item>
+    </string-array>
+
+    <string-array name="left_or_right_array">
+        <item> </item>
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
+    <string-array name="defect_array">
+        <item> </item>
+        <item>Spacing</item>
+        <item>Crack</item>
+        <item>Splinth</item>
+    </string-array>
+
+    <string-array name="yes_array">
+        <item> </item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="tunnel_array">
+        <item> </item>
+        <item>Tunnel A</item>
+        <item>Tunnel B</item>
+    </string-array>
+
+    <string-array name="dropmin_array">
+        <item> </item>
+        <item>Drop</item>
+        <item>Minimum</item>
+    </string-array>
+
+    <string-array name="newcurrent_array">
+        <item> </item>
+        <item>New</item>
+        <item>Current</item>
     </string-array>
 
     <string-array name="bound_arrays">
@@ -100,4 +114,11 @@
     <string name="railLouR">Rail (L/R)</string>
     <string name="chFr">CH Fr</string>
     <string name="cr8andUpload">Create and Upload</string>
+    <string name="chTo">CH To</string>
+    <string name="def_desc">Def Desc</string>
+    <string name="point">Point</string>
+    <string name="tunnel_clk">Tunnel Clk</string>
+    <string name="drop_min">Drop/ Min</string>
+    <string name="new_current">New/ Current</string>
+    <string name="edit_others">Others</string>
 </resources>

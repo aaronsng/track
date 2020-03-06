@@ -48,7 +48,7 @@
     </style>
 
     <style name="uploadPage">
-        <item name="android:textSize">@dimen/textsize_Small</item>
+        <item name="android:textSize">@dimen/textsize_Xsmall</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:gravity">left</item>
         <item name="android:fontFamily">@font/raleway_semibold</item>
