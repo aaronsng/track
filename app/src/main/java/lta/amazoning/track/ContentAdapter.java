@@ -20,21 +20,22 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     private Context context;
 
     List<String> listDataGroup;
+    List<String> inputNew;
     List<String> indexGroup = new ArrayList<>();
     HashMap<String, List<String>> listDataChild = new HashMap<>();
 
-    ContentAdapter(Context context, List<String> listDataGroup) {
+    ContentAdapter(Context context, List<String> inputNew) {
         this.context = context;
-        this.listDataGroup = listDataGroup;
+        this.inputNew = inputNew;
         try {
-            this.ITEM_COUNT = listDataGroup.size();
-            Log.i("ContentAdapter", listDataGroup.toString());
+            this.ITEM_COUNT = inputNew.size();
+            Log.i("ContentAdapter", inputNew.toString());
         }
         catch (NullPointerException ne) {
             this.ITEM_COUNT = 0;
         }
         Log.i("ContentAdapter", "Initialising Content Adapter");
-        Log.i("ContentAdapter", String.valueOf(this.ITEM_COUNT));
+        Log.i("ContentAdapter", "ITEM_COUNT: " + String.valueOf(this.ITEM_COUNT));
         mInflater = LayoutInflater.from(context);
     }
 
@@ -83,7 +84,8 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
 
         // Adding child data
-        listDataChild.put("Alcohol", alcoholList);
+        listDataGroup.add(inputNew.get(position));
+        listDataChild.put(inputNew.get(position), alcoholList);
         holder.setContent(listDataGroup, indexGroup, listDataChild);
     }
 
