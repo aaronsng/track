@@ -76,7 +76,6 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
             return;
         }
 
-        Log.i(CLASS_NAME, "Binding ViewHolder");
         // array of strings
         String[] array;
 

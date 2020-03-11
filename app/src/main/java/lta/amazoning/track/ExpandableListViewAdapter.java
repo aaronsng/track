@@ -75,7 +75,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public Object getGroup(int groupPosition) {
         List<String> returner = new ArrayList<>();
-        Log.i(CLASS_NAME, "groupPosition: " + String.valueOf(groupPosition));
+        Log.i(CLASS_NAME, listDataGroup.toString());
         returner.add(this.indexGroup.get(0));
         returner.add(this.listDataGroup.get(0)); // CHFr
         returner.add(this.listDataGroup.get(1)); // CHTo
