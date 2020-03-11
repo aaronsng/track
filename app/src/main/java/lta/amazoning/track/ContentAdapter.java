@@ -20,17 +20,14 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     private String CLASS_NAME = "ContentAdapter";
     private Context context;
 
-    List<String> listDataGroup;
-    List<String> inputNew;
-    List<String> indexGroup = new ArrayList<>();
-    HashMap<String, List<String>> listDataChild = new HashMap<>();
+    List<JSONObject> content;
 
-    ContentAdapter(Context context, List<String> inputNew) {
+    ContentAdapter(Context context, List<JSONObject> content) {
         this.context = context;
-        this.inputNew = inputNew;
+        this.content = content;
         try {
-            this.ITEM_COUNT = inputNew.size();
-            Log.i(CLASS_NAME, inputNew.toString());
+            this.ITEM_COUNT = content.size();
+            Log.i(CLASS_NAME, String.valueOf(content.size()));
         }
         catch (NullPointerException ne) {
             this.ITEM_COUNT = 0;
@@ -52,19 +49,25 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        List<String> listDataGroup = new ArrayList<>();
+        HashMap<String, List<String>> listDataChild = new HashMap<>();
+        List<String> indexGroup = new ArrayList<>();
+
         if (ITEM_COUNT == 0) {
+            listDataGroup.add("");
+            listDataGroup.add("");
             listDataGroup.add("");
             indexGroup.add("empty");
             Log.i(CLASS_NAME, "Empty List");
+
             // Adding child data
             holder.setContent(listDataGroup, indexGroup, listDataChild);
             return;
         }
 
         if (position == ITEM_COUNT - 1) {
-            List<String> listDataGroup = new ArrayList<>();
-            List<String> indexGroup = new ArrayList<>();
-            HashMap<String, List<String>> listDataChild = new HashMap<>();
+            listDataGroup.add("");
+            listDataGroup.add("");
             listDataGroup.add("");
             indexGroup.add("e");
 
@@ -85,11 +88,42 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
 
         // Adding child data
-        indexGroup.add(String.valueOf(position + 1));
-        listDataGroup.add(inputNew.get(position));
-        listDataChild.put(inputNew.get(position), alcoholList);
-        holder.setContent(listDataGroup, indexGroup, listDataChild);
+        try {
+            HashMap<String, String> listConverted = convertListToHash(content);
+            Log.i(CLASS_NAME, "positionVal: " + String.valueOf(position));
+            indexGroup.add(String.valueOf(position + 1));
+            listDataGroup.add(listConverted.get("CHFr"));
+            listDataGroup.add(listConverted.get("CHTo"));
+            listDataGroup.add(listConverted.get("defect"));
+            listDataChild.put("image", alcoholList);
+            holder.setContent(listDataGroup, indexGroup, listDataChild);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
+
+    private HashMap<String, String> convertListToHash(List<JSONObject> defectDetails) throws JSONException {
+        int ITEM_COUNT = defectDetails.size();
+        HashMap<String, String> localeGroup = new HashMap<>();
+
+        for (int i = 0; i < ITEM_COUNT; i++) {
+            JSONObject defectDetail = defectDetails.get(i);
+            localeGroup.put("leftOrRight", defectDetail.get("leftOrRight").toString());
+            localeGroup.put("CHFr", defectDetail.get("CHFr").toString());
+            localeGroup.put("CHTo", defectDetail.get("CHTo").toString());
+            localeGroup.put("defect", defectDetail.get("defect").toString());
+            localeGroup.put("point", defectDetail.get("point").toString());
+            localeGroup.put("tunnel", defectDetail.get("tunnel").toString());
+            localeGroup.put("dropMin", defectDetail.get("dropMin").toString());
+            localeGroup.put("newCurrent", defectDetail.get("newCurrent").toString());
+            localeGroup.put("sc", defectDetail.get("sc").toString());
+            localeGroup.put("others", defectDetail.get("others").toString());
+            localeGroup.put("image", defectDetail.get("image").toString());
+            Log.i(CLASS_NAME, defectDetail.toString());
+        }
+        return localeGroup;
+    }
+
 
     @Override
     public int getItemCount() {

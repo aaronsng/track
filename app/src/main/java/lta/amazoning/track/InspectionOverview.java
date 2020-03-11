@@ -3,6 +3,7 @@ package lta.amazoning.track;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InspectionOverview extends Fragment {
@@ -40,17 +42,18 @@ public class InspectionOverview extends Fragment {
     private FragmentActivity mFrgAct;
     private Intent mIntent;
     private UploadFragment upload_instance;
+    private Context context;
 
     private boolean mIsShowingCardHeaderShadow;
-    public boolean onUploadCompleted;
     private boolean mIsRestoredFromBackstack;
 
     private ContentAdapter defectAdapter;
     private JSONObject jsonObject;
-    public List<JSONObject> defectDetails;
-    private List<String> defectDetail;
+    public List<JSONObject> defectDetails = new ArrayList<>();
+    private DataJSON defectDetail;
 
     private TextView inspectionSum;
+    private RecyclerView rv;
     private FloatingActionButton fab;
     private Button leftButton;
     private Button middleButton;
@@ -58,12 +61,15 @@ public class InspectionOverview extends Fragment {
 
     public boolean navigated_upload = false;
 
-    public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, Context context) {
+    public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, Context context) throws JSONException {
         this.fab = fab;
         this.leftButton = leftButton;
         this.middleButton = middleButton;
         this.rightButton = rightButton;
-        defectAdapter = new ContentAdapter(context, defectDetail);
+        this.context = context;
+        defectDetail = new DataJSONBuilder().setOthers("empty").setCHFr("empty").setCHTo("empty").build();
+        defectDetails.add(defectDetail);
+        defectAdapter = new ContentAdapter(context, defectDetails);
     }
 
     @Override
@@ -85,7 +91,6 @@ public class InspectionOverview extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        defectDetails = new ArrayList<>();
         String start = "", end = "";
         try {
             start = jsonObject.get("Start").toString();
@@ -96,7 +101,7 @@ public class InspectionOverview extends Fragment {
         inspectionSum = view.findViewById(R.id.cardo_title);
         inspectionSum.setText(inspectionSum.getText().toString() + " " + start + " to " + end);
 
-        final RecyclerView rv = view.findViewById(R.id.card_recyclerview);
+        rv = view.findViewById(R.id.card_recyclerview);
         final LinearLayoutManager lm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(lm);
         rv.setAdapter(defectAdapter);
@@ -125,7 +130,11 @@ public class InspectionOverview extends Fragment {
                 launchNewInspection(fab, leftButton, middleButton, rightButton);
             }
         });
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
         if(mIsRestoredFromBackstack)
         {
             // Set the bottom app bar back to normal
@@ -137,36 +146,32 @@ public class InspectionOverview extends Fragment {
             // Add defect detail to the list
             if (upload_instance.defectDetails == null) {
                 Log.e(CLASS_NAME, "Defect Details NULL!");
+                return;
             }
-            defectDetails.add(upload_instance.defectDetails);
-
-            // Notify ContentAdapter of the changes
-            try {
-                Log.i(CLASS_NAME, convertToList(defectDetails).toString());
-                rv.setAdapter(new ContentAdapter(getContext(), convertToList(defectDetails)));
-                rv.setActivated(true);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            Log.i(CLASS_NAME, String.valueOf(defectDetails.size()));
+            defectDetails = upload_instance.defectDetails;
+            defectAdapter = new ContentAdapter(context, defectDetails);
         }
     }
 
-
-    public List<String> convertToList(List<JSONObject> defectDetails) throws JSONException {
-        Integer ITEM_COUNT = defectDetails.size();
-//        Log.i(CLASS_NAME, "ITEM_COUNT: " + String.valueOf(ITEM_COUNT));
-        List<String>  localeGroup = new ArrayList<>();
-
-        if (ITEM_COUNT == null) {
-            return null;
-        }
+    public HashMap<String, String> convertListToHash(List<JSONObject> defectDetails) throws JSONException {
+        int ITEM_COUNT = defectDetails.size();
+        HashMap<String, String> localeGroup = new HashMap<>();
 
         for (int i = 0; i < ITEM_COUNT; i++) {
             JSONObject defectDetail = defectDetails.get(i);
-            String desc = defectDetail.get("others").toString();
-            Log.i(CLASS_NAME, desc);
-
-            localeGroup.add(desc);
+            localeGroup.put("leftOrRight", defectDetail.get("leftOrRight").toString());
+            localeGroup.put("CHFr", defectDetail.get("CHFr").toString());
+            localeGroup.put("CHTo", defectDetail.get("CHTo").toString());
+            localeGroup.put("defect", defectDetail.get("defect").toString());
+            localeGroup.put("point", defectDetail.get("point").toString());
+            localeGroup.put("tunnel", defectDetail.get("tunnel").toString());
+            localeGroup.put("dropMin", defectDetail.get("dropMin").toString());
+            localeGroup.put("newCurrent", defectDetail.get("newCurrent").toString());
+            localeGroup.put("sc", defectDetail.get("sc").toString());
+            localeGroup.put("others", defectDetail.get("others").toString());
+            localeGroup.put("image", defectDetail.get("image").toString());
+            Log.i(CLASS_NAME, defectDetail.toString());
         }
         return localeGroup;
     }
@@ -188,7 +193,7 @@ public class InspectionOverview extends Fragment {
     }
 
     public void launchNewInspection(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
-        upload_instance = new UploadFragment(fab, leftButton, middleButton, rightButton);
+        upload_instance = new UploadFragment(fab, leftButton, middleButton, rightButton, defectDetails);
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, upload_instance);
         ft.addToBackStack("Upload");

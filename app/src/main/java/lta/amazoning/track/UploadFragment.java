@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.security.NetworkSecurityPolicy;
 import android.util.Log;
@@ -47,6 +48,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
@@ -82,7 +84,7 @@ public class UploadFragment extends Fragment {
     private boolean taken_picture = false;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public JSONObject defectDetails;
+    public List<JSONObject> defectDetails;
     public boolean uploadSuccess = false;
 
     // Btm app bar
@@ -94,11 +96,12 @@ public class UploadFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     @SuppressLint("RestrictedApi")
-    public UploadFragment(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton) {
+    public UploadFragment(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, List<JSONObject> defectDetails) {
         this.fab = fab;
         this.leftButton = leftButton;
         this.middleButton = middleButton;
         this.rightButton = rightButton;
+        this.defectDetails = defectDetails;
 
         fab.hide();
         leftButton.setVisibility(View.INVISIBLE);
@@ -260,16 +263,11 @@ public class UploadFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] byteArray = stream.toByteArray();
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("leftOrRight", railLouRSpinner.getSelectedItem().toString());
-        jsonObject.put("CHFr", chFrSpinner.getText().toString());
-        jsonObject.put("CHTo", chToSpinner.getText().toString());
-        jsonObject.put("defect", defectSpinner.getSelectedItem().toString());
-        jsonObject.put("point", pointSpinner.getText().toString());
-        jsonObject.put("tunnel", tunnelSpinner.getSelectedItem().toString());
-        jsonObject.put("dropMin", dropMinSpinner.getSelectedItem().toString());
-        jsonObject.put("newCurrent", newCurrentSpinner.getSelectedItem().toString());
-        jsonObject.put("others", others.getText().toString());
+        DataJSON jsonObject = new DataJSON(railLouRSpinner.getSelectedItem().toString(), chFrSpinner.getText().toString(),
+                                            chToSpinner.getText().toString(), defectSpinner.getSelectedItem().toString(),
+                                            pointSpinner.getText().toString(), tunnelSpinner.getSelectedItem().toString(),
+                                            dropMinSpinner.getSelectedItem().toString(), newCurrentSpinner.getSelectedItem().toString(),
+                                        "", others.getText().toString(), "");
 
         RequestBody postBodyJSON = RequestBody.create(JSON, jsonObject.toString());
 
@@ -280,8 +278,7 @@ public class UploadFragment extends Fragment {
 
 //        postRequest(postImageUrl, postBodyImage, view);
 //        postRequest(postJsonUrl, postBodyJSON, view);
-        Log.i("UploadFragment", jsonObject.toString());
-        this.defectDetails = jsonObject;
+        this.defectDetails.add(jsonObject);
         this.uploadSuccess = true;
         getActivity().getSupportFragmentManager().popBackStackImmediate();
     }

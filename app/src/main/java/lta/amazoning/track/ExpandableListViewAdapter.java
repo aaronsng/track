@@ -1,6 +1,7 @@
 package lta.amazoning.track;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
+    private static final String CLASS_NAME = "ExpandableListViewAdapter";
     private Context context;
 
     // group titles
@@ -73,8 +75,11 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public Object getGroup(int groupPosition) {
         List<String> returner = new ArrayList<>();
-        returner.add(this.indexGroup.get(groupPosition));
-        returner.add(this.listDataGroup.get(groupPosition));
+        Log.i(CLASS_NAME, "groupPosition: " + String.valueOf(groupPosition));
+        returner.add(this.indexGroup.get(0));
+        returner.add(this.listDataGroup.get(0)); // CHFr
+        returner.add(this.listDataGroup.get(1)); // CHTo
+        returner.add(this.listDataGroup.get(2)); // Defect
         return returner;
     }
 
@@ -94,7 +99,9 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         List<String> output = (List<String>) getGroup(groupPosition);
         // Get index, as defined above is located in index 0
         String index = output.get(0);
-        String defect_info_1 = output.get(1);
+        String chFr = output.get(1);
+        String chTo = output.get(2);
+        String defect_info = output.get(3);
 
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
@@ -111,7 +118,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView defectLocation = convertView.findViewById(R.id.defect_location);
         TextView defectInfo = convertView.findViewById(R.id.defect_info);
 
-        if (indexGroup.get(groupPosition) == "e") {
+        if (indexGroup.get(0) == "e") {
             int color = convertView.getContext().getColor(android.R.color.white);
             r.setBackgroundColor(color);
             number.setBackgroundColor(color);
@@ -123,7 +130,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         number.setText(index);
-        defectInfo.setText(defect_info_1);
+        defectLocation.setText("Fr " + chFr + " to " + chTo);
+        defectInfo.setText(defect_info);
         return convertView;
     }
 
