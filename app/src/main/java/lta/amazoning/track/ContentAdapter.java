@@ -17,6 +17,7 @@ import java.util.List;
 class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     private static int ITEM_COUNT;
     private final LayoutInflater mInflater;
+    private String CLASS_NAME = "ContentAdapter";
     private Context context;
 
     List<String> listDataGroup;
@@ -29,13 +30,13 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         this.inputNew = inputNew;
         try {
             this.ITEM_COUNT = inputNew.size();
-            Log.i("ContentAdapter", inputNew.toString());
+            Log.i(CLASS_NAME, inputNew.toString());
         }
         catch (NullPointerException ne) {
             this.ITEM_COUNT = 0;
         }
-        Log.i("ContentAdapter", "Initialising Content Adapter");
-        Log.i("ContentAdapter", "ITEM_COUNT: " + String.valueOf(this.ITEM_COUNT));
+        Log.i(CLASS_NAME, "Initialising Content Adapter");
+        Log.i(CLASS_NAME, "ITEM_COUNT: " + String.valueOf(this.ITEM_COUNT));
         mInflater = LayoutInflater.from(context);
     }
 
@@ -54,7 +55,7 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         if (ITEM_COUNT == 0) {
             listDataGroup.add("");
             indexGroup.add("empty");
-            Log.i("ContentAdapter", "Empty List");
+            Log.i(CLASS_NAME, "Empty List");
             // Adding child data
             holder.setContent(listDataGroup, indexGroup, listDataChild);
             return;
@@ -72,7 +73,7 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
             return;
         }
 
-        Log.i("ContentAdapter", "Binding ViewHolder");
+        Log.i(CLASS_NAME, "Binding ViewHolder");
         // array of strings
         String[] array;
 
@@ -84,6 +85,7 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
 
         // Adding child data
+        indexGroup.add(String.valueOf(position));
         listDataGroup.add(inputNew.get(position));
         listDataChild.put(inputNew.get(position), alcoholList);
         holder.setContent(listDataGroup, indexGroup, listDataChild);
