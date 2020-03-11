@@ -31,7 +31,8 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     private Button middle;
     private Button right;
     private NiceSpinner stationstartspinner, stationendspinner, boundspinner, sectorcodespinner, accompaniedbyspinner;
-    private InspectionOverview instance;
+    public InspectionOverview instance;
+    public JSONObject inspection_details;
 
     public NewInspectionFragment(FloatingActionButton fab, Button left, Button middle, Button right) {
         this.fab = fab;
@@ -69,17 +70,18 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject jsonObject = new JSONObject();
+                inspection_details = new JSONObject();
                 try {
-                    jsonObject.put("Start", stationstartspinner.getSelectedItem().toString());
-                    jsonObject.put("End", stationendspinner.getSelectedItem().toString());
-                    jsonObject.put("Bound", boundspinner.getSelectedItem().toString());
-                    jsonObject.put("Sector", sectorcodespinner.getSelectedItem().toString());
-                    jsonObject.put("Accompanied", accompaniedbyspinner.getSelectedItem().toString());
+                    inspection_details.put("Start", stationstartspinner.getSelectedItem().toString());
+                    inspection_details.put("End", stationendspinner.getSelectedItem().toString());
+                    inspection_details.put("Bound", boundspinner.getSelectedItem().toString());
+                    inspection_details.put("Sector", sectorcodespinner.getSelectedItem().toString());
+                    inspection_details.put("Accompanied", accompaniedbyspinner.getSelectedItem().toString());
 
                     left.setVisibility(View.VISIBLE);
                     right.setVisibility(View.VISIBLE);
-                    instance = new InspectionOverview(fab, left, middle, right);
+                    instance = new InspectionOverview(fab, left, middle, right, getContext());
+                    instance.setInspectionStatus(inspection_details);
                     FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.homepage, instance);
                     Log.i("NewInspectionFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
@@ -134,10 +136,5 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     @Override
     public void onDetach() {
         super.onDetach();
-    }
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

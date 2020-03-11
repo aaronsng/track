@@ -58,9 +58,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             convertView = layoutInflater.inflate(R.layout.list_row_child, null);
         }
 
-        TextView textViewChild = convertView
-                .findViewById(R.id.textViewChild);
-
+        TextView textViewChild = convertView.findViewById(R.id.textViewChild);
         textViewChild.setText(childText);
         return convertView;
     }
@@ -96,6 +94,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         List<String> output = (List<String>) getGroup(groupPosition);
         // Get index, as defined above is located in index 0
         String index = output.get(0);
+        String defect_info_1 = output.get(1);
 
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
@@ -124,6 +123,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         number.setText(index);
+        defectInfo.setText(defect_info_1);
         return convertView;
     }
 
@@ -131,7 +131,6 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     public boolean hasStableIds() {
         return false;
     }
-
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {

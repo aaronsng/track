@@ -7,12 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,13 +50,17 @@ public class HomepageFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         button = view.findViewById(R.id.inspection_button);
 
-        left_button.setText("Settings");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openInspectionOverview();
-            }
-        });
+        if (new_inspection != null && new_inspection.inspection_details != null) {
+            left_button.setText("Settings");
+            button.setTextColor(getResources().getColor(android.R.color.black));
+            button.setBackgroundTintList(getResources().getColorStateList(R.color.btn_available));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openInspectionOverview();
+                }
+            });
+        }
         button = view.findViewById(R.id.logout_button);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -80,7 +81,7 @@ public class HomepageFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mFrgAct = getActivity();
-        mIntent = mFrgAct.getIntent(); //  Intent intent = new Intent(getActivity().getIntent());
+        mIntent = mFrgAct.getIntent();
     }
 
     public void openNewInspectionFragment(){
@@ -93,7 +94,7 @@ public class HomepageFragment extends Fragment {
     }
 
     public void openInspectionOverview() {
-        instance_inspection = new InspectionOverview(this.fab, this.left_button, this.middle_button, this.right_button);
+        instance_inspection = new_inspection.instance;
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, instance_inspection);
         ft.addToBackStack("Inspection");

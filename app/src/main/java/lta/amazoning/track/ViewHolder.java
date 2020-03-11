@@ -38,16 +38,16 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         // initializing the list of child
         listDataChild = c;
 
-        // initializing the adapter object
+        // Initializing the adapter object
         this.expandableListViewAdapter = new ExpandableListViewAdapter(itemView.getContext(), listDataGroup, indexGroup, listDataChild);
 
-        // setting list adapter
+        // Setting list adapter
         expandableListView.setAdapter(this.expandableListViewAdapter);
 
         // Adding group data
         Context cxt = itemView.getContext();
 
-        // notify the adapter
+        // Notify the adapter
         this.expandableListViewAdapter.notifyDataSetChanged();
     }
 

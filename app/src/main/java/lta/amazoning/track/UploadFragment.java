@@ -65,14 +65,14 @@ public class UploadFragment extends Fragment {
     private Button upload;
     private ImageButton takePicture;
 
-    private NiceSpinner chFrSpinner;
-    private NiceSpinner chToSpinner;
     private NiceSpinner defectSpinner;
     private NiceSpinner railLouRSpinner;
-    private NiceSpinner pointSpinner;
     private NiceSpinner tunnelSpinner;
     private NiceSpinner dropMinSpinner;
     private NiceSpinner newCurrentSpinner;
+    private EditText chFrSpinner;
+    private EditText chToSpinner;
+    private EditText pointSpinner;
     private EditText others;
 
     private static final int CAMERA_REQUEST = 1888;
@@ -81,6 +81,9 @@ public class UploadFragment extends Fragment {
     private Uri imageUri;
     private boolean taken_picture = false;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    public JSONObject defectDetails;
+    public boolean uploadSuccess = false;
 
     // Btm app bar
     private FloatingActionButton fab;
@@ -103,12 +106,6 @@ public class UploadFragment extends Fragment {
         middleButton.setVisibility(View.VISIBLE);
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -120,28 +117,20 @@ public class UploadFragment extends Fragment {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         url = getActivity().getResources().getText(R.string.server_url).toString();
 
+        chFrSpinner = view.findViewById(R.id.chFr_spinner);
+        chToSpinner = view.findViewById(R.id.chTo_spinner);
+        pointSpinner = view.findViewById(R.id.point_spinner);
         others = view.findViewById(R.id.edit_others_txt);
         middleButton.setText(getActivity().getResources().getText(R.string.cr8andUpload));
         toUpload = view.findViewById(R.id.imageHolder);
 
         String[] arraySpinner = getActivity().getResources().getStringArray(R.array.stations_arrays);
-        chFrSpinner = view.findViewById(R.id.chFr_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chFrSpinner.setAdapter(adapter);
-
-        chToSpinner = view.findViewById(R.id.chTo_spinner);
-        ArrayAdapter<String> chTo_adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, arraySpinner);
-        chTo_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chToSpinner.setAdapter(chTo_adapter);
 
         String[] leftOrRightSpinner = getActivity().getResources().getStringArray(R.array.left_or_right_array);
         railLouRSpinner = view.findViewById(R.id.railLouR_spinner);
         ArrayAdapter<String> rail_adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, leftOrRightSpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        rail_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         railLouRSpinner.setAdapter(rail_adapter);
 
         String[] defectDesc = getActivity().getResources().getStringArray(R.array.defect_array);
@@ -150,13 +139,6 @@ public class UploadFragment extends Fragment {
                 android.R.layout.simple_spinner_item, defectDesc);
         defect_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         defectSpinner.setAdapter(defect_adapter);
-
-        String[] point = getActivity().getResources().getStringArray(R.array.yes_array);
-        pointSpinner = view.findViewById(R.id.point_spinner);
-        ArrayAdapter<String> point_adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, point);
-        point_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        pointSpinner.setAdapter(point_adapter);
 
         String[] tunnelClk = getActivity().getResources().getStringArray(R.array.tunnel_array);
         tunnelSpinner = view.findViewById(R.id.tunnel_spinner);
@@ -280,15 +262,14 @@ public class UploadFragment extends Fragment {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("leftOrRight", railLouRSpinner.getSelectedItem().toString());
-        jsonObject.put("CHFr", chFrSpinner.getSelectedItem().toString());
-        jsonObject.put("CHTo", chToSpinner.getSelectedItem().toString());
+        jsonObject.put("CHFr", chFrSpinner.getText().toString());
+        jsonObject.put("CHTo", chToSpinner.getText().toString());
         jsonObject.put("defect", defectSpinner.getSelectedItem().toString());
-        jsonObject.put("point", pointSpinner.getSelectedItem().toString());
+        jsonObject.put("point", pointSpinner.getText().toString());
         jsonObject.put("tunnel", tunnelSpinner.getSelectedItem().toString());
         jsonObject.put("dropMin", dropMinSpinner.getSelectedItem().toString());
         jsonObject.put("newCurrent", newCurrentSpinner.getSelectedItem().toString());
         jsonObject.put("others", others.getText().toString());
-        Log.i("Lel", jsonObject.toString());
 
         RequestBody postBodyJSON = RequestBody.create(JSON, jsonObject.toString());
 
@@ -297,8 +278,12 @@ public class UploadFragment extends Fragment {
                 .addFormDataPart("image", "image" + uid + ".jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
                 .build();
 
-        postRequest(postImageUrl, postBodyImage, view);
-        postRequest(postJsonUrl, postBodyJSON, view);
+//        postRequest(postImageUrl, postBodyImage, view);
+//        postRequest(postJsonUrl, postBodyJSON, view);
+        Log.i("UploadFragment", jsonObject.toString());
+        this.defectDetails = jsonObject;
+        this.uploadSuccess = true;
+        getActivity().getSupportFragmentManager().popBackStackImmediate();
     }
 
     void postRequest(String postUrl, RequestBody postBody, final View view) {
