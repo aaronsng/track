@@ -67,8 +67,8 @@ public class InspectionOverview extends Fragment {
         this.middleButton = middleButton;
         this.rightButton = rightButton;
         this.context = context;
-        defectDetail = new DataJSONBuilder().setOthers("empty").setCHFr("empty").setCHTo("empty").build();
-        defectDetails.add(defectDetail);
+        //defectDetail = new DataJSONBuilder().setOthers("empty").setCHFr("empty").setCHTo("empty").build();
+        //defectDetails.add(defectDetail);
         defectAdapter = new ContentAdapter(context, defectDetails);
     }
 
@@ -148,9 +148,11 @@ public class InspectionOverview extends Fragment {
                 Log.e(CLASS_NAME, "Defect Details NULL!");
                 return;
             }
+
             Log.i(CLASS_NAME, String.valueOf(defectDetails.size()));
             defectDetails = upload_instance.defectDetails;
-            defectAdapter = new ContentAdapter(context, defectDetails);
+            Log.i(CLASS_NAME, defectDetails.toString());
+            defectAdapter = new ContentAdapter(context, upload_instance.defectDetails);
         }
     }
 

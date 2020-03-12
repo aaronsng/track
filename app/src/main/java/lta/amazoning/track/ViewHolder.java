@@ -13,7 +13,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private CustomExpandableListView expandableListView;
     private ExpandableListViewAdapter expandableListViewAdapter;
     private List<String> listDataGroup;
-    private List<String> indexGroup;
+    private List<String> contentGroup;
     private HashMap<String, List<String>> listDataChild;
 
     public ViewHolder(final View itemView) {
@@ -30,7 +30,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public void setContent(List<String> d, List<String> i, HashMap<String, List<String>> c)  {
         // initializing the list of indices
-        indexGroup = i;
+        contentGroup = i;
 
         // initializing the list of groups
         listDataGroup = d;
@@ -39,7 +39,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         listDataChild = c;
 
         // Initializing the adapter object
-        this.expandableListViewAdapter = new ExpandableListViewAdapter(itemView.getContext(), listDataGroup, indexGroup, listDataChild);
+        this.expandableListViewAdapter = new ExpandableListViewAdapter(itemView.getContext(), listDataGroup, contentGroup, listDataChild);
 
         // Setting list adapter
         expandableListView.setAdapter(this.expandableListViewAdapter);

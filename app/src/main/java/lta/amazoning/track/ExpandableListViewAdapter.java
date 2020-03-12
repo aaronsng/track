@@ -39,7 +39,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listDataChild.get(this.listDataGroup.get(groupPosition))
+        return this.listDataChild.get(this.listDataGroup.get(0))
                 .get(childPosititon);
     }
 
@@ -54,7 +54,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
-        if (convertView == null && this.indexGroup.get(groupPosition) != "e") {
+        if (convertView == null && this.indexGroup.get(0) != "e") {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_row_child, null);
@@ -67,19 +67,19 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        if (indexGroup.get(groupPosition) == "e") return 0;
-        return this.listDataChild.get(this.listDataGroup.get(groupPosition))
+        if (indexGroup.get(0) == "e") return 0;
+        return this.listDataChild.get(indexGroup)
                 .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
         List<String> returner = new ArrayList<>();
-        Log.i(CLASS_NAME, listDataGroup.toString());
+        Log.i(CLASS_NAME, indexGroup.toString());
         returner.add(this.indexGroup.get(0));
-        returner.add(this.listDataGroup.get(0)); // CHFr
-        returner.add(this.listDataGroup.get(1)); // CHTo
-        returner.add(this.listDataGroup.get(2)); // Defect
+        returner.add(this.indexGroup.get(1)); // CHFr
+        returner.add(this.indexGroup.get(2)); // CHTo
+        returner.add(this.indexGroup.get(3)); // Defect
         return returner;
     }
 

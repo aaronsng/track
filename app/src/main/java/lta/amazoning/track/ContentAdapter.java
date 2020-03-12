@@ -20,6 +20,9 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     private String CLASS_NAME = "ContentAdapter";
     private Context context;
 
+    List<List<String>> listDataGroup = new ArrayList<>();
+    List<HashMap<String, List<String>>> listDataChild = new ArrayList<>();
+    List<List<String>> contentList = new ArrayList<>();
     List<JSONObject> content;
 
     ContentAdapter(Context context, List<JSONObject> content) {
@@ -49,32 +52,29 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        List<String> listDataGroup = new ArrayList<>();
-        HashMap<String, List<String>> listDataChild = new HashMap<>();
-        List<String> indexGroup = new ArrayList<>();
+        List<String> list_data_group = new ArrayList<>();
+        HashMap<String, List<String>> list_data_child = new HashMap<>();
+        List<String> content_group = new ArrayList<>();
 
         if (ITEM_COUNT == 0) {
-            listDataGroup.add("");
-            listDataGroup.add("");
-            listDataGroup.add("");
-            indexGroup.add("empty");
-            Log.i(CLASS_NAME, "Empty List");
-
-            // Adding child data
-            holder.setContent(listDataGroup, indexGroup, listDataChild);
             return;
         }
 
-        if (position == ITEM_COUNT - 1) {
-            listDataGroup.add("");
-            listDataGroup.add("");
-            listDataGroup.add("");
-            indexGroup.add("e");
-
-            // Adding child data
-            holder.setContent(listDataGroup, indexGroup, listDataChild);
-            return;
-        }
+//        if (position == ITEM_COUNT - 1) {
+//            list_data_group.add("");
+//            list_data_child.put("empty", list_data_group);
+//            content_group.add("e");
+//            content_group.add("e");
+//            content_group.add("e");
+//            content_group.add("e");
+//            listDataChild.add(list_data_child);
+//            listDataGroup.add(list_data_group);
+//            contentList.add(content_group);
+//
+//            // Adding child data
+//            holder.setContent(listDataGroup.get(position), contentList.get(position), listDataChild.get(position));
+//            return;
+//        }
 
         // array of strings
         String[] array;
@@ -88,37 +88,49 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         // Adding child data
         try {
-            HashMap<String, String> listConverted = convertListToHash(content);
+            List<HashMap<String, String>> listConverted = convertListToHash(content);
+            int l = listConverted.size();
             Log.i(CLASS_NAME, "positionVal: " + String.valueOf(position));
-            indexGroup.add(String.valueOf(position + 1));
-            listDataGroup.add(listConverted.get("CHFr"));
-            listDataGroup.add(listConverted.get("CHTo"));
-            listDataGroup.add(listConverted.get("defect"));
-            listDataChild.put("image", alcoholList);
-            holder.setContent(listDataGroup, indexGroup, listDataChild);
+
+            content_group.add(String.valueOf(position + 1));
+            content_group.add(listConverted.get(position).get("CHFr"));
+            content_group.add(listConverted.get(position).get("CHTo"));
+            content_group.add(listConverted.get(position).get("defect"));
+            list_data_group.add(String.valueOf(position));
+            list_data_child.put("image", alcoholList);
+
+            Log.i(CLASS_NAME, "contentList: " + contentList.toString());
+            listDataChild.add(list_data_child);
+            listDataGroup.add(list_data_group);
+            contentList.add(content_group);
+
+            holder.setContent(listDataGroup.get(position), contentList.get(position), listDataChild.get(position));
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    private HashMap<String, String> convertListToHash(List<JSONObject> defectDetails) throws JSONException {
+    private List<HashMap<String, String>> convertListToHash(List<JSONObject> defectDetails) throws JSONException {
         int ITEM_COUNT = defectDetails.size();
-        HashMap<String, String> localeGroup = new HashMap<>();
+        List<HashMap<String, String>> localeGroup = new ArrayList<>();
 
         for (int i = 0; i < ITEM_COUNT; i++) {
             JSONObject defectDetail = defectDetails.get(i);
-            localeGroup.put("leftOrRight", defectDetail.get("leftOrRight").toString());
-            localeGroup.put("CHFr", defectDetail.get("CHFr").toString());
-            localeGroup.put("CHTo", defectDetail.get("CHTo").toString());
-            localeGroup.put("defect", defectDetail.get("defect").toString());
-            localeGroup.put("point", defectDetail.get("point").toString());
-            localeGroup.put("tunnel", defectDetail.get("tunnel").toString());
-            localeGroup.put("dropMin", defectDetail.get("dropMin").toString());
-            localeGroup.put("newCurrent", defectDetail.get("newCurrent").toString());
-            localeGroup.put("sc", defectDetail.get("sc").toString());
-            localeGroup.put("others", defectDetail.get("others").toString());
-            localeGroup.put("image", defectDetail.get("image").toString());
+            HashMap<String, String> iter = new HashMap<>();
+            iter.put("leftOrRight", defectDetail.get("leftOrRight").toString());
+            iter.put("CHFr", defectDetail.get("CHFr").toString());
+            iter.put("CHTo", defectDetail.get("CHTo").toString());
+            iter.put("defect", defectDetail.get("defect").toString());
+            iter.put("point", defectDetail.get("point").toString());
+            iter.put("tunnel", defectDetail.get("tunnel").toString());
+            iter.put("dropMin", defectDetail.get("dropMin").toString());
+            iter.put("newCurrent", defectDetail.get("newCurrent").toString());
+            iter.put("sc", defectDetail.get("sc").toString());
+            iter.put("others", defectDetail.get("others").toString());
+            iter.put("image", defectDetail.get("image").toString());
             Log.i(CLASS_NAME, defectDetail.toString());
+
+            localeGroup.add(iter);
         }
         return localeGroup;
     }
