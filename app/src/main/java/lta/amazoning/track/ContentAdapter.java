@@ -60,32 +60,6 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
             return;
         }
 
-//        if (position == ITEM_COUNT - 1) {
-//            list_data_group.add("");
-//            list_data_child.put("empty", list_data_group);
-//            content_group.add("e");
-//            content_group.add("e");
-//            content_group.add("e");
-//            content_group.add("e");
-//            listDataChild.add(list_data_child);
-//            listDataGroup.add(list_data_group);
-//            contentList.add(content_group);
-//
-//            // Adding child data
-//            holder.setContent(listDataGroup.get(position), contentList.get(position), listDataChild.get(position));
-//            return;
-//        }
-
-        // array of strings
-        String[] array;
-
-        // list of alcohol
-        List<String> alcoholList = new ArrayList<>();
-        array = this.context.getResources().getStringArray(R.array.string_array_alcohol);
-        for (String item : array) {
-            alcoholList.add(item);
-        }
-
         // Adding child data
         try {
             List<HashMap<String, String>> listConverted = convertListToHash(content);
@@ -97,7 +71,7 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
             content_group.add(listConverted.get(position).get("CHTo"));
             content_group.add(listConverted.get(position).get("defect"));
             list_data_group.add(String.valueOf(position));
-            list_data_child.put("image", alcoholList);
+            list_data_child.put("image", list_data_group);
 
             Log.i(CLASS_NAME, "contentList: " + contentList.toString());
             listDataChild.add(list_data_child);
@@ -107,6 +81,21 @@ class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
             holder.setContent(listDataGroup.get(position), contentList.get(position), listDataChild.get(position));
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+        if (position == ITEM_COUNT - 1) {
+            list_data_group.add("");
+            list_data_child.put("empty", list_data_group);
+            content_group.add("e");
+            content_group.add("e");
+            content_group.add("e");
+            content_group.add("e");
+            listDataChild.add(list_data_child);
+            listDataGroup.add(list_data_group);
+            contentList.add(content_group);
+
+            // Adding child data
+            holder.setContent(listDataGroup.get(position), contentList.get(position), listDataChild.get(position));
         }
     }
 
