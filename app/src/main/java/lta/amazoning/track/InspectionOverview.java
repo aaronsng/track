@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -49,26 +50,33 @@ public class InspectionOverview extends Fragment {
 
     private ContentAdapter defectAdapter;
     private JSONObject jsonObject;
-    public List<JSONObject> defectDetails = new ArrayList<>();
+    public List<ImageJSONBinder> defectDetails = new ArrayList<>();
     private DataJSON defectDetail;
 
     private TextView inspectionSum;
     private RecyclerView rv;
     private FloatingActionButton fab;
+    private BottomAppBar btm_bar;
     private Button leftButton;
     private Button middleButton;
     private Button rightButton;
 
     public boolean navigated_upload = false;
 
-    public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, Context context) throws JSONException {
+    public InspectionOverview() {}
+
+    public InspectionOverview(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, BottomAppBar btm_bar, Context context) throws JSONException {
         this.fab = fab;
         this.leftButton = leftButton;
         this.middleButton = middleButton;
         this.rightButton = rightButton;
         this.context = context;
+        this.btm_bar = btm_bar;
         //defectDetail = new DataJSONBuilder().setOthers("empty").setCHFr("empty").setCHTo("empty").build();
         //defectDetails.add(defectDetail);
+
+        btm_bar.setVisibility(View.VISIBLE);
+        fab.show();
         defectAdapter = new ContentAdapter(context, defectDetails);
     }
 

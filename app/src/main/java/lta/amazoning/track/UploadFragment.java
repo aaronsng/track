@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -67,15 +68,16 @@ public class UploadFragment extends Fragment {
     private Button upload;
     private ImageButton takePicture;
 
-    private NiceSpinner defectSpinner;
     private NiceSpinner railLouRSpinner;
     private NiceSpinner tunnelSpinner;
     private NiceSpinner dropMinSpinner;
     private NiceSpinner newCurrentSpinner;
+    private NiceSpinner scSpinner;
     private EditText chFrSpinner;
     private EditText chToSpinner;
     private EditText pointSpinner;
     private EditText others;
+    private EditText defectSpinner;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -84,7 +86,7 @@ public class UploadFragment extends Fragment {
     private boolean taken_picture = false;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public List<JSONObject> defectDetails;
+    public List<ImageJSONBinder> defectDetails;
     public boolean uploadSuccess = false;
 
     // Btm app bar
@@ -95,8 +97,13 @@ public class UploadFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+    public UploadFragment() {
+        // doesn't do anything special
+    }
+
     @SuppressLint("RestrictedApi")
-    public UploadFragment(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, List<JSONObject> defectDetails) {
+    public UploadFragment(FloatingActionButton fab, Button leftButton, Button middleButton, Button rightButton, List<ImageJSONBinder> defectDetails) {
         this.fab = fab;
         this.leftButton = leftButton;
         this.middleButton = middleButton;
@@ -126,6 +133,7 @@ public class UploadFragment extends Fragment {
         others = view.findViewById(R.id.edit_others_txt);
         middleButton.setText(getActivity().getResources().getText(R.string.cr8andUpload));
         toUpload = view.findViewById(R.id.imageHolder);
+        defectSpinner = view.findViewById(R.id.desc_spinner);
 
         String[] arraySpinner = getActivity().getResources().getStringArray(R.array.stations_arrays);
 
@@ -135,13 +143,6 @@ public class UploadFragment extends Fragment {
                 android.R.layout.simple_spinner_item, leftOrRightSpinner);
         rail_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         railLouRSpinner.setAdapter(rail_adapter);
-
-        String[] defectDesc = getActivity().getResources().getStringArray(R.array.defect_array);
-        defectSpinner = view.findViewById(R.id.desc_spinner);
-        ArrayAdapter<String> defect_adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, defectDesc);
-        defect_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        defectSpinner.setAdapter(defect_adapter);
 
         String[] tunnelClk = getActivity().getResources().getStringArray(R.array.tunnel_array);
         tunnelSpinner = view.findViewById(R.id.tunnel_spinner);
@@ -157,12 +158,19 @@ public class UploadFragment extends Fragment {
         dropmin_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropMinSpinner.setAdapter(dropmin_adapter);
 
-        String[] newCurrent = getActivity().getResources().getStringArray(R.array.newcurrent_array);
+        String[] newCurrentArray = getActivity().getResources().getStringArray(R.array.newcurrent_array);
         newCurrentSpinner = view.findViewById(R.id.newcurrent_spinner);
-        ArrayAdapter<String> newcurrent_adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, newCurrent);
-        newcurrent_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        newCurrentSpinner.setAdapter(newcurrent_adapter);
+        ArrayAdapter<String> newCurrent_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, newCurrentArray);
+        newCurrent_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newCurrentSpinner.setAdapter(newCurrent_adapter);
+
+        String[] scArray = getActivity().getResources().getStringArray(R.array.sc_array);
+        scSpinner = view.findViewById(R.id.sc_spinner);
+        ArrayAdapter<String> sc_adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, scArray);
+        sc_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        scSpinner.setAdapter(sc_adapter);
 
         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 
@@ -264,10 +272,11 @@ public class UploadFragment extends Fragment {
         byte[] byteArray = stream.toByteArray();
 
         DataJSON jsonObject = new DataJSON(railLouRSpinner.getSelectedItem().toString(), chFrSpinner.getText().toString(),
-                                            chToSpinner.getText().toString(), defectSpinner.getSelectedItem().toString(),
+                                            chToSpinner.getText().toString(), defectSpinner.getText().toString(),
                                             pointSpinner.getText().toString(), tunnelSpinner.getSelectedItem().toString(),
                                             dropMinSpinner.getSelectedItem().toString(), newCurrentSpinner.getSelectedItem().toString(),
-                                        "", others.getText().toString(), "");
+                                            scSpinner.getSelectedItem().toString(), others.getText().toString(), uid);
+        ImageJSONBinder pass_data_to_inspection = new ImageJSONBinder(jsonObject, bitmap);
 
         RequestBody postBodyJSON = RequestBody.create(JSON, jsonObject.toString());
 
@@ -276,11 +285,11 @@ public class UploadFragment extends Fragment {
                 .addFormDataPart("image", "image" + uid + ".jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
                 .build();
 
-//        postRequest(postImageUrl, postBodyImage, view);
-//        postRequest(postJsonUrl, postBodyJSON, view);
-        this.defectDetails.add(jsonObject);
+        postRequest(postImageUrl, postBodyImage, view);
+        postRequest(postJsonUrl, postBodyJSON, view);
+        this.defectDetails.add(pass_data_to_inspection);
         this.uploadSuccess = true;
-        getActivity().getSupportFragmentManager().popBackStackImmediate();
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
     void postRequest(String postUrl, RequestBody postBody, final View view) {
@@ -291,33 +300,42 @@ public class UploadFragment extends Fragment {
                 .url(postUrl)
                 .post(postBody)
                 .build();
-
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                // Cancel the post on failure.
-                call.cancel();
 
-                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.i("UploadFragment", "Failed!");
-                        e.printStackTrace();
-                    }
-                });
             }
 
             @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.i("UploadFragment", "Succeeded!");
-                    }
-                });
+            public void onResponse(Call call, Response response) throws IOException {
             }
         });
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                // Cancel the post on failure.
+//                call.cancel();
+//
+//                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.i("UploadFragment", "Failed!");
+//                        e.printStackTrace();
+//                    }
+//                });
+//            }
+
+//            @Override
+//            public void onResponse(Call call, final Response response) throws IOException {
+//                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.i("UploadFragment", "Succeeded!");
+//                    }
+//                });
+//            }
+//        });
     }
 }

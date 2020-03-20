@@ -25,14 +25,7 @@
     <string name="log_out">Log Out</string>
     <string name="good_evening">Good Evening</string>
     <string name="according_to_schedule">According to schedule, you are to inspect PGL-SKG</string>
-    <string name="server_url">52.221.216.109</string>
-    <string-array name="string_array_alcohol">
-        <item>Vodka</item>
-        <item>Rum</item>
-        <item>Whiskey</item>
-        <item>Gin</item>
-        <item>Tequila</item>
-    </string-array>
+    <string name="server_url">ec2-3-1-206-86.ap-southeast-1.compute.amazonaws.com</string>
 
     <string name="newinspectionmain1">You are about to start a new inspection!</string>
     <string name="newinspectionmain2">Please enter details:"</string>
@@ -117,16 +110,33 @@
         <item>Harry</item>
     </string-array>
 
+    <string-array name="sc_array">
+        <item> </item>
+        <item>SC1</item>
+        <item>SC2</item>
+        <item>SC3</item>
+        <item>SC4</item>
+        <item>SC5</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="railLouR">Rail (L/R)</string>
     <string name="chFr">CH Fr</string>
     <string name="cr8andUpload">Create and Upload</string>
     <string name="chTo">CH To</string>
-    <string name="def_desc">Def Desc</string>
+    <string name="def_desc">Defect Description</string>
     <string name="point">Point</string>
     <string name="tunnel_clk">Tunnel Clk</string>
     <string name="drop_min">Drop/ Min</string>
     <string name="new_current">New/ Current</string>
     <string name="edit_others">Others</string>
+    <string name="left_or_right_child_label_text">Left / Right Track:</string>
+    <string name="point_label_text">Point:</string>
+    <string name="tunnel_label_text">Tunnel:</string>
+    <string name="drop_min_label_text">Drop / Min:</string>
+    <string name="sc_label_text">SC Rating: </string>
+    <string name="others_label_text">Others:</string>
+    <string name="new_current_label_text">New / Current:</string>
 </resources>

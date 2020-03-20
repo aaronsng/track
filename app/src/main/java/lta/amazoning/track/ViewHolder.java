@@ -1,6 +1,7 @@
 package lta.amazoning.track;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.View;
 import android.widget.ExpandableListView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private ExpandableListViewAdapter expandableListViewAdapter;
     private List<String> listDataGroup;
     private List<String> contentGroup;
-    private HashMap<String, List<String>> listDataChild;
+    private ImageListBinder listDataChild;
 
     public ViewHolder(final View itemView) {
         super(itemView);
@@ -28,7 +29,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setContent(List<String> d, List<String> i, HashMap<String, List<String>> c)  {
+    public void setContent(List<String> d, List<String> i, ImageListBinder c)  {
         // initializing the list of indices
         contentGroup = i;
 

@@ -1,16 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textViewChild"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/raleway_semibold"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/defectView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/standard_105"
+            android:paddingBottom="@dimen/one_and_a_half_grid_unit"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/gauche_ou_droit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/defectView">
+
+            <TextView
+                android:id="@+id/left_or_right_child_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                android:fontFamily="@font/raleway_bold"
+                android:text="@string/left_or_right_child_label_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/left_or_right_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/left_or_right_child_label"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_10"
+            android:id="@+id/lepoint"
+            app:layout_constraintTop_toBottomOf="@id/gauche_ou_droit">
+
+            <TextView
+                android:id="@+id/point_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/point_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/point_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/point_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_10"
+            android:id="@+id/letunnel"
+            app:layout_constraintTop_toBottomOf="@id/lepoint">
+
+            <TextView
+                android:id="@+id/tunnel_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tunnel_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tunnel_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/tunnel_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_10"
+            android:id="@+id/tomber_ou_minimum"
+            app:layout_constraintTop_toBottomOf="@id/letunnel">
+
+            <TextView
+                android:id="@+id/drop_min_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/drop_min_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/drop_min_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/drop_min_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_10"
+            android:id="@+id/nouveau_ou_courant"
+            app:layout_constraintTop_toBottomOf="@id/tomber_ou_minimum">
+
+            <TextView
+                android:id="@+id/new_current_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_current_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/new_current_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/new_current_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_10"
+            android:id="@+id/severite"
+            app:layout_constraintTop_toBottomOf="@id/nouveau_ou_courant">
+
+            <TextView
+                android:id="@+id/sc_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sc_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sc_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/sc_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dautres"
+            app:layout_constraintTop_toBottomOf="@id/severite"
+            android:layout_marginTop="@dimen/standard_10">
+
+            <TextView
+                android:id="@+id/others_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/others_label_text"
+                android:fontFamily="@font/raleway_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/others_statement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/others_label"
+                android:layout_marginStart="@dimen/one_and_a_half_grid_unit"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

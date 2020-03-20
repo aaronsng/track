@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomepageFragment extends Fragment {
@@ -31,12 +32,18 @@ public class HomepageFragment extends Fragment {
     private Button left_button;
     private Button middle_button;
     private Button right_button;
+    private BottomAppBar btm_bar;
 
-    public HomepageFragment(FloatingActionButton fab, Button left_button, Button middle_button, Button right_button) {
+    public HomepageFragment() {
+        // doesn't do anything special
+    }
+
+    public HomepageFragment(FloatingActionButton fab, Button left_button, Button middle_button, Button right_button, BottomAppBar btm_bar) {
         this.fab = fab;
         this.left_button = left_button;
         this.middle_button = middle_button;
         this.right_button = right_button;
+        this.btm_bar = btm_bar;
     }
 
     @Override
@@ -85,7 +92,7 @@ public class HomepageFragment extends Fragment {
     }
 
     public void openNewInspectionFragment(){
-        new_inspection = new NewInspectionFragment(this.fab, this.left_button, this.middle_button, this.right_button);
+        new_inspection = new NewInspectionFragment(this.fab, this.left_button, this.middle_button, this.right_button, this.btm_bar);
         FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, new_inspection);
         ft.addToBackStack("NewInspection");

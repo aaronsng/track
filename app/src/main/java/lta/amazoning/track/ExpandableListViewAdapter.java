@@ -1,11 +1,13 @@
 package lta.amazoning.track;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -23,24 +25,24 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     private List<String> listDataGroup;
 
     // index
-    private List<String> indexGroup;
+    private List<String> contentGroup;
 
     // child data in format of header title, child title
-    private HashMap<String, List<String>> listDataChild;
+    private ImageListBinder listDataChild;
 
     public ExpandableListViewAdapter(Context context, List<String> listDataGroup,
-                                     List<String> indexGroup,
-                                     HashMap<String, List<String>> listChildData) {
+                                     List<String> contentGroup,
+                                     ImageListBinder listChildData) {
         this.context = context;
         this.listDataGroup = listDataGroup;
         this.listDataChild = listChildData;
-        this.indexGroup = indexGroup;
+        this.contentGroup = contentGroup;
+        Log.i(CLASS_NAME, "child_data_point: " + listDataChild.toString());
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listDataChild.get(this.listDataGroup.get(0))
-                .get(childPosititon);
+        return this.listDataChild;
     }
 
     @Override
@@ -52,34 +54,51 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
-
-        if (convertView == null && this.indexGroup.get(0) != "e") {
+        final ImageListBinder child_data_point = (ImageListBinder) getChild(groupPosition, childPosition);
+        Log.i(CLASS_NAME, listDataChild.toString());
+        if (convertView == null && this.contentGroup.get(0) != "e") {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_row_child, null);
         }
 
-        TextView textViewChild = convertView.findViewById(R.id.textViewChild);
-        textViewChild.setText(childText);
+        TextView leftOrRight, point, tunnel, dropMin, newCurrent, sc, others;
+        ImageView defectView;
+
+        leftOrRight = convertView.findViewById(R.id.left_or_right_statement);
+        point = convertView.findViewById(R.id.point_statement);
+        tunnel = convertView.findViewById(R.id.tunnel_statement);
+        dropMin = convertView.findViewById(R.id.drop_min_statement);
+        newCurrent = convertView.findViewById(R.id.new_current_statement);
+        sc = convertView.findViewById(R.id.sc_statement);
+        others = convertView.findViewById(R.id.others_statement);
+        defectView = convertView.findViewById(R.id.defectView);
+
+        leftOrRight.setText(child_data_point.dataList.get(0));
+        point.setText(child_data_point.dataList.get(1));
+        tunnel.setText(child_data_point.dataList.get(2));
+        dropMin.setText(child_data_point.dataList.get(3));
+        newCurrent.setText(child_data_point.dataList.get(4));
+        sc.setText(child_data_point.dataList.get(5));
+        others.setText(child_data_point.dataList.get(6));
+        defectView.setImageBitmap(child_data_point.defectImage);
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        if (indexGroup.get(0) == "e") return 0;
-        return this.listDataChild.get(indexGroup)
-                .size();
+        if (contentGroup.get(0) == "e") return 0;
+        return 1;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
         List<String> returner = new ArrayList<>();
-        Log.i(CLASS_NAME, indexGroup.toString());
-        returner.add(this.indexGroup.get(0));
-        returner.add(this.indexGroup.get(1)); // CHFr
-        returner.add(this.indexGroup.get(2)); // CHTo
-        returner.add(this.indexGroup.get(3)); // Defect
+        Log.i(CLASS_NAME, contentGroup.toString());
+        returner.add(this.contentGroup.get(0));
+        returner.add(this.contentGroup.get(1)); // CHFr
+        returner.add(this.contentGroup.get(2)); // CHTo
+        returner.add(this.contentGroup.get(3)); // Defect
         return returner;
     }
 
@@ -118,7 +137,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView defectLocation = convertView.findViewById(R.id.defect_location);
         TextView defectInfo = convertView.findViewById(R.id.defect_info);
 
-        if (indexGroup.get(0) == "e") {
+        if (contentGroup.get(0) == "e") {
             int color = convertView.getContext().getColor(android.R.color.white);
             r.setBackgroundColor(color);
             number.setBackgroundColor(color);

@@ -138,46 +138,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
-
-            <TextView
-                android:id="@+id/desc"
-                style="@style/uploadPage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/raleway_semibold"
-                android:text="@string/def_desc"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/desc_spinner"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <lta.amazoning.track.NiceSpinner
-                android:id="@+id/desc_spinner"
-                android:layout_width="@dimen/standard_230"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
-                android:layout_weight="1"
-                android:fontFamily="@font/raleway_semibold"
-                app:layout_constraintBottom_toBottomOf="@+id/desc"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/desc" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
             <TextView
                 android:id="@+id/new_current"
                 style="@style/uploadPage"
@@ -203,8 +170,42 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
-            android:id="@+id/constraintLayout8"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+
+            <TextView
+                android:id="@+id/sc_indicate"
+                style="@style/uploadPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/sc_label_text"
+                app:layout_constraintBottom_toBottomOf="@+id/sc_spinner"
+                app:layout_constraintEnd_toStartOf="@+id/sc_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <lta.amazoning.track.NiceSpinner
+                android:id="@+id/sc_spinner"
+                android:layout_width="@dimen/standard_230"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spinner_upload_endmargin"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/sc_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sc_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/three_grid_unit"
@@ -212,7 +213,30 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+
+            <EditText
+                android:id="@+id/desc_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/def_desc"
+                android:singleLine="true"
+                android:nextFocusDown="@id/chFr_spinner"
+                android:fontFamily="@font/raleway_regular"
+                android:textSize="@dimen/textsize_Xsmall"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/constraintLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/three_grid_unit"
+            android:paddingTop="@dimen/one_and_a_half_grid_unit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
             <EditText
                 android:id="@+id/chFr_spinner"
@@ -220,6 +244,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="@string/chFr"
+                android:singleLine="true"
+                android:nextFocusDown="@id/chTo_spinner"
                 android:fontFamily="@font/raleway_regular"
                 android:textSize="@dimen/textsize_Xsmall"/>
         </RelativeLayout>
@@ -240,6 +266,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="@string/chTo"
+                android:singleLine="true"
+                android:nextFocusDown="@id/point_spinner"
                 android:fontFamily="@font/raleway_regular"
                 android:textSize="@dimen/textsize_Xsmall" />
         </RelativeLayout>
@@ -260,6 +288,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:hint="@string/point"
+                android:singleLine="true"
+                android:nextFocusDown="@id/edit_others_txt"
                 android:fontFamily="@font/raleway_regular"
                 android:textSize="@dimen/textsize_Xsmall"
                 app:layout_constraintEnd_toEndOf="parent" />

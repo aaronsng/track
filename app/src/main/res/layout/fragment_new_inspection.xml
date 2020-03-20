@@ -11,15 +11,13 @@
         android:id="@+id/newinspectionmain1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
         android:text="@string/newinspectionmain1"
         android:textAppearance="@style/newinspection1"
-        android:paddingLeft="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16"
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="411dp" />
 
@@ -39,188 +37,206 @@
         tools:layout_conversion_absoluteHeight="138dp"
         tools:layout_conversion_absoluteWidth="411dp" />
 
-    <TextView
-        android:id="@+id/stationstart"
-        android:layout_width="@dimen/option_width"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="right"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:text="@string/stationstart_prompt"
-        android:textAppearance="@style/newinspection3"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newinspectionmain2"
-        tools:layout_conversion_absoluteHeight="138dp"
-        tools:layout_conversion_absoluteWidth="500dp" />
+        app:layout_constraintTop_toBottomOf="@id/newinspectionmain2">
 
-    <TextView
-        android:id="@+id/stationend"
-        android:layout_width="@dimen/option_width"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:text="@string/stationend_prompt"
-        android:textAppearance="@style/newinspection3"
-        android:layout_marginTop="@dimen/spinner_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stationstart"
-        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
-        tools:layout_conversion_absoluteHeight="138dp"
-        tools:layout_conversion_absoluteWidth="500dp" />
+        <TextView
+            android:id="@+id/stationstart"
+            android:layout_width="@dimen/option_width"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/option_paddingleft"
+            android:text="@string/stationstart_prompt"
+            android:textAppearance="@style/newinspection3"
+            app:layout_constraintBottom_toBottomOf="@+id/stationstartspinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stationstartspinner"
+            tools:layout_conversion_absoluteHeight="138dp"
+            tools:layout_conversion_absoluteWidth="500dp" />
 
-    <TextView
-        android:id="@+id/bound"
-        android:layout_width="@dimen/option_width"
-        android:layout_height="wrap_content"
-        android:text="@string/bound_prompt"
-        android:textAppearance="@style/newinspection3"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:gravity="right"
-        android:layout_marginTop="@dimen/spinner_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stationend"
-        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
-        tools:layout_conversion_absoluteHeight="138dp"
-        tools:layout_conversion_absoluteWidth="500dp" />
-
-    <TextView
-        android:id="@+id/sectorcode"
-        android:layout_width="@dimen/option_width"
-        android:layout_height="wrap_content"
-        android:text="@string/sectorcode_prompt"
-        android:textAppearance="@style/newinspection3"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:gravity="right"
-        android:layout_marginTop="@dimen/spinner_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bound"
-        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
-        tools:layout_conversion_absoluteHeight="138dp"
-        tools:layout_conversion_absoluteWidth="500dp" />
-
-    <TextView
-        android:id="@+id/accompaniedby"
-        android:layout_width="@dimen/option_width"
-        android:layout_height="wrap_content"
-        android:text="@string/accompany_prompt"
-        android:textAppearance="@style/newinspection3"
-        android:paddingLeft="@dimen/option_paddingleft"
-        android:gravity="right"
-        android:layout_marginTop="@dimen/spinner_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sectorcode"
-        app:layout_constraintVertical_bias="@dimen/spinner_vertbias"
-        tools:layout_conversion_absoluteHeight="138dp"
-        tools:layout_conversion_absoluteWidth="500dp" />
-
-
-    <RelativeLayout
-        android:id="@+id/stationstartspinnerholder"
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/stationstart"
-        app:layout_constraintStart_toEndOf="@+id/stationstart"
-        app:layout_constraintTop_toTopOf="@+id/stationstart"
-        app:layout_constraintVertical_bias="0.481">
         <lta.amazoning.track.NiceSpinner
             android:id="@+id/stationstartspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/stations_arrays"
-            android:textAppearance="@style/newinspectionspinner">
+            android:textAppearance="@style/newinspectionspinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stationstart"
+            app:layout_constraintTop_toTopOf="parent">
         </lta.amazoning.track.NiceSpinner>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/stationendspinnerholder"
-        android:layout_width="215dp"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/stationend"
-        app:layout_constraintStart_toEndOf="@+id/stationend"
-        app:layout_constraintTop_toTopOf="@+id/stationend"
-        app:layout_constraintVertical_bias="0.481">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+        <TextView
+            android:id="@+id/stationend"
+            android:layout_width="@dimen/option_width"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/option_paddingleft"
+            android:text="@string/stationend_prompt"
+            android:textAppearance="@style/newinspection3"
+            app:layout_constraintBottom_toBottomOf="@+id/stationendspinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stationendspinner"
+            tools:layout_conversion_absoluteHeight="138dp"
+            tools:layout_conversion_absoluteWidth="500dp" />
+
         <lta.amazoning.track.NiceSpinner
             android:id="@+id/stationendspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/stations_arrays"
-            android:textAppearance="@style/newinspectionspinner">
-        </lta.amazoning.track.NiceSpinner>
-    </RelativeLayout>
+            android:textAppearance="@style/newinspectionspinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stationend"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/boundspinnerholder"
-        android:layout_width="215dp"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/bound"
-        app:layout_constraintStart_toEndOf="@+id/bound"
-        app:layout_constraintTop_toTopOf="@+id/bound"
-        app:layout_constraintVertical_bias="0.481">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout1">
+
+        <TextView
+            android:id="@+id/bound"
+            android:layout_width="@dimen/option_width"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/option_paddingleft"
+            android:text="@string/bound_prompt"
+            android:textAppearance="@style/newinspection3"
+            app:layout_constraintBottom_toBottomOf="@+id/boundspinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boundspinner"
+            tools:layout_conversion_absoluteHeight="138dp"
+            tools:layout_conversion_absoluteWidth="500dp" />
+
         <lta.amazoning.track.NiceSpinner
             android:id="@+id/boundspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/bound_arrays"
-            android:textAppearance="@style/newinspectionspinner">
+            android:textAppearance="@style/newinspectionspinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bound"
+            app:layout_constraintTop_toTopOf="parent">
         </lta.amazoning.track.NiceSpinner>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/sectorcodespinnerholder"
-        android:layout_width="215dp"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/sectorcode"
-        app:layout_constraintStart_toEndOf="@+id/sectorcode"
-        app:layout_constraintTop_toTopOf="@+id/sectorcode"
-        app:layout_constraintVertical_bias="0.481">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
+
+        <TextView
+            android:id="@+id/sectorcode"
+            android:layout_width="@dimen/option_width"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/option_paddingleft"
+            android:text="@string/sectorcode_prompt"
+            android:textAppearance="@style/newinspection3"
+            app:layout_constraintBottom_toBottomOf="@+id/sectorcodespinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sectorcodespinner"
+            tools:layout_conversion_absoluteHeight="138dp"
+            tools:layout_conversion_absoluteWidth="500dp" />
+
         <lta.amazoning.track.NiceSpinner
             android:id="@+id/sectorcodespinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:entries="@array/sector_arrays"
-            android:textAppearance="@style/newinspectionspinner">
+            android:textAppearance="@style/newinspectionspinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sectorcode"
+            app:layout_constraintTop_toTopOf="parent">
         </lta.amazoning.track.NiceSpinner>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/accompaniedbyspinnerholder"
-        android:layout_width="215dp"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/accompaniedby"
-        app:layout_constraintStart_toEndOf="@+id/accompaniedby"
-        app:layout_constraintTop_toTopOf="@+id/accompaniedby"
-        app:layout_constraintVertical_bias="0.481">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/accompaniedby"
+            android:layout_width="@dimen/option_width"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="@dimen/option_paddingleft"
+            android:text="@string/accompany_prompt"
+            android:textAppearance="@style/newinspection3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/accompaniedbyspinner"
+            tools:layout_conversion_absoluteHeight="138dp"
+            tools:layout_conversion_absoluteWidth="500dp" />
+
         <lta.amazoning.track.NiceSpinner
             android:id="@+id/accompaniedbyspinner"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:entries="@array/accompany_array"
-            android:textAppearance="@style/newinspectionspinner">
-        </lta.amazoning.track.NiceSpinner>
-    </RelativeLayout>
+            android:textAppearance="@style/newinspectionspinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/accompaniedby"
+            app:layout_constraintTop_toTopOf="parent" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:clickable="true"
+        android:layout_marginTop="@dimen/standard_105"
+        android:src="@android:drawable/ic_media_play"
+        android:text="Go"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

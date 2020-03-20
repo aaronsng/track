@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -27,6 +28,8 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     private Intent mIntent;
 
     private FloatingActionButton fab;
+    private FloatingActionButton go;
+    private BottomAppBar btm_bar;
     private Button left;
     private Button middle;
     private Button right;
@@ -34,12 +37,18 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     public InspectionOverview instance;
     public JSONObject inspection_details;
 
-    public NewInspectionFragment(FloatingActionButton fab, Button left, Button middle, Button right) {
+    public NewInspectionFragment() {
+    }
+
+    public NewInspectionFragment(FloatingActionButton fab, Button left, Button middle, Button right, BottomAppBar btm_bar) {
         this.fab = fab;
         this.left = left;
         this.middle = middle;
         this.right = right;
+        this.btm_bar = btm_bar;
 
+        fab.hide();
+        btm_bar.setVisibility(View.INVISIBLE);
         left.setVisibility(View.INVISIBLE);
         right.setVisibility(View.INVISIBLE);
     }
@@ -66,31 +75,6 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inspection_details = new JSONObject();
-                try {
-                    inspection_details.put("Start", stationstartspinner.getSelectedItem().toString());
-                    inspection_details.put("End", stationendspinner.getSelectedItem().toString());
-                    inspection_details.put("Bound", boundspinner.getSelectedItem().toString());
-                    inspection_details.put("Sector", sectorcodespinner.getSelectedItem().toString());
-                    inspection_details.put("Accompanied", accompaniedbyspinner.getSelectedItem().toString());
-
-                    left.setVisibility(View.VISIBLE);
-                    right.setVisibility(View.VISIBLE);
-                    instance = new InspectionOverview(fab, left, middle, right, getContext());
-                    instance.setInspectionStatus(inspection_details);
-                    FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.homepage, instance);
-                    Log.i("NewInspectionFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
-                    ft.commit();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
@@ -102,6 +86,7 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        go = view.findViewById(R.id.go);
         stationstartspinner = view.findViewById(R.id.stationstartspinner);
         ArrayAdapter<CharSequence> stationstartadapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.stations_arrays, android.R.layout.simple_spinner_item);
@@ -131,6 +116,31 @@ public class NewInspectionFragment extends Fragment implements AdapterView.OnIte
                 R.array.accompany_array, android.R.layout.simple_spinner_item);
         accompaniedbyadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accompaniedbyspinner.setAdapter(accompaniedbyadapter);
+
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inspection_details = new JSONObject();
+                try {
+                    inspection_details.put("Start", stationstartspinner.getSelectedItem().toString());
+                    inspection_details.put("End", stationendspinner.getSelectedItem().toString());
+                    inspection_details.put("Bound", boundspinner.getSelectedItem().toString());
+                    inspection_details.put("Sector", sectorcodespinner.getSelectedItem().toString());
+                    inspection_details.put("Accompanied", accompaniedbyspinner.getSelectedItem().toString());
+
+                    left.setVisibility(View.VISIBLE);
+                    right.setVisibility(View.VISIBLE);
+                    instance = new InspectionOverview(fab, left, middle, right, btm_bar, getContext());
+                    instance.setInspectionStatus(inspection_details);
+                    FragmentTransaction ft = mFrgAct.getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.homepage, instance);
+                    Log.i("NewInspectionFragment", "Back stack count " + Integer.toString(mFrgAct.getSupportFragmentManager().getBackStackEntryCount()));
+                    ft.commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override

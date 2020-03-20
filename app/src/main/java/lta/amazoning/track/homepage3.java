@@ -42,16 +42,15 @@ public class homepage3 extends AppCompatActivity {
         tool_bar.setTitle("Inspection #" + idFault);
         setSupportActionBar(tool_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        btm_bar = findViewById(R.id.btm_bar);
 
-        final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button);
+        final HomepageFragment homeFrag = new HomepageFragment(fab, left_button, middle_button, right_button, btm_bar);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.homepage, homeFrag);
         ft.addToBackStack("Homepage");
         navigated_home = false;
         ft.commit();
-
-        btm_bar = findViewById(R.id.btm_bar);
 
 
         tool_bar.setNavigationOnClickListener(new View.OnClickListener() {
